@@ -28,23 +28,23 @@ public class AdminService {
 		return new AdminManagerImpl();
 	}
 	
-	public boolean addJobSeeker(Admin admin) throws ClassNotFoundException, SQLException {
+	public boolean addAdmin(Admin admin) throws ClassNotFoundException, SQLException {
 		return getAdminManager().addAdmin(admin);
 	}
 	
-	public boolean editJobSeeker(Admin admin) throws ClassNotFoundException, SQLException {
+	public boolean editAdmin(Admin admin) throws ClassNotFoundException, SQLException {
 		return getAdminManager().editAdmin(admin);
 	}
 	
-	public boolean deleteJobSeeker(int adminId) throws ClassNotFoundException, SQLException {
+	public boolean deleteAdmin(int adminId) throws ClassNotFoundException, SQLException {
 		return getAdminManager().deleteAdmin(adminId);
 	}
 	
-	public Admin fetchSingleJobSeeker(int adminId) throws ClassNotFoundException, SQLException {
+	public Admin fetchSingleAdmin(int adminId) throws ClassNotFoundException, SQLException {
 		return getAdminManager().fetchSingleAdmin(adminId);
 	}
 	
-	public List<Admin> fetchAllJobSeekers() throws ClassNotFoundException, SQLException {
+	public List<Admin> fetchAllAdmins() throws ClassNotFoundException, SQLException {
 		return getAdminManager().fetchAllAdmins();
 	}
 }

@@ -6,56 +6,99 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap 5 CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
+
+<!-- Bootstrap 5 JS -->
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Bootstrap 4 CSS (optional) -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- Your custom CSS -->
 <link rel="stylesheet" href="styles.css">
 <title>Register</title>
-<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-	<div class="topnav">
-		<div href="#home" class="title">The Jobs</div>
-		<!-- <a href="#news">News</a> -->
-		<a href="">Profile</a> <a>Login <svg width="16" height="16"
-				fill="none" stroke="currentColor" stroke-linecap="round"
-				stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-				xmlns="http://www.w3.org/2000/svg">
-    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
-    <path d="m10 17 5-5-5-5"></path>
-    <path d="M15 12H3"></path>
-  </svg>
-		</a>
-
-	</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var jobSeeker = sessionStorage.getItem("jobSeeker");
+    var dashboardLink = document.getElementById("dashboardLink");
+	var logoutLink = document.getElementById("logoutLink");
+	var loginLink = document.getElementById("loginLink");
+	var regLink = document.getElementById("regLink");
+	var profileLink = document.getElementById("profileLink");
+    if (!jobSeeker) {
+    	profileLink.style.display = "none";
+    	dashboardLink.style.display = "none";
+    	logoutLink.style.display = "none";
+    	}else{
+    	loginLink.style.display = "none";
+    	regLink.style.display = "none";
+    	}
+});
+</script>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#"> <svg width="30" height="30"
+					fill="#007bff" viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg">
+  					<path
+						d="M15.75 13.5h-7.5V12H.75v9.188a.562.562 0 0 0 .563.562h21.375a.562.562 0 0 0 .562-.563V12h-7.5v1.5Z"></path>
+  					<path
+						d="M23.25 5.813a.563.563 0 0 0-.563-.563H18V2.625a.375.375 0 0 0-.375-.375H6.375A.375.375 0 0 0 6 2.625V5.25H1.312a.563.563 0 0 0-.562.563V10.5h22.5V5.812Zm-7.125-.563h-8.25V4.125h8.25V5.25Z"></path>
+				</svg> Job Consultancy
+			</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNav" aria-controls="navbarNav"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item" id="indexLink"><a class="nav-link" href="index.jsp">Home</a>
+					</li>
+					<li class="nav-item" id="dashboardLink"><a class="nav-link" href="userDashboard.jsp">Dashboard</a>
+					</li>
+					<li class="nav-item" id="profileLink"><a class="nav-link" href="userProfile.jsp">Profile </a></li>
+					<li class="nav-item  active" id="regLink"><a class="nav-link" href="#">Register </a></li>
+					<li class="nav-item" id="loginLink"><a class="nav-link" href="login.jsp">Login </a></li>
+					<li class="nav-item" id="logoutLink"><a class="nav-link" href="#">Logout </a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+		<div class="container" style="margin-bottom: 40px">
 	<section class="vh-100">
-		<div class="container h-100">
+	
 			<div
 				class="row d-flex justify-content-center align-items-center h-100">
-				<div class="col-lg-12 col-xl-11">
+				
+				<div class="col-md-12">
 					<div class="card text-black" style="border-radius: 25px;">
-						<div class="card-body p-md-5">
+						<div class="card-body">
 							<div class="row justify-content-center" style="margin: 5% 0%;">
-								<div class="col-md-6">
+								<!-- <div class="col-md-6">
 									<img
 										src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
 										class="img-fluid" alt="Sample image" style="margin: 50% 0%">
-								</div>
-								<div class="col-md-6">
+								</div> -->
+								<div class="col-md-12">
 									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign
 										up</p>
-									<p style="text-align: center" id="response">${feebackMessage}</p> 
-									<form id="regForm" action="register" method="post"
-										class="mx-1 mx-md-4" id="registerForm">
-										<!-- Name input -->
+									<form id="regForm" class="mx-1 mx-md-4">
+									<div class="row">
+									<div class="col-md-6">
+									<!-- Name input -->
 										<div class="d-flex flex-row align-items-center mb-4">
 											<div class="form-outline flex-fill mb-0">
 												<label class="form-label">Your Name</label><span
@@ -82,8 +125,9 @@
 												<div class="text-danger" id="numberError"></div>
 											</div>
 										</div>
-
-										<!-- Field input -->
+										</div>
+									<div class="col-md-6">
+									<!-- Field input -->
 										<div class="d-flex flex-row align-items-center mb-4">
 											<div class="form-outline flex-fill mb-0">
 												<label class="form-label"> Interested Field</label><span
@@ -113,15 +157,123 @@
 												<div class="text-danger" id="repeatPasswordError"></div>
 											</div>
 										</div>
+										</div>
+										</div>
+										
+										
+									<div class="row">
+									<div class="col-md-12">
+									
+									<div style="margin-bottom: 10px;">
+											<a href="login.jsp">Already have an account? Login here.</a>
+										</div>
+
+										<input type="hidden" name="actiontype" value="add" />
+										<input type="hidden" name="hashedPw" id="hashedPw" />
+
+										<div class="d-flex justify-content-end mx-4 mb-3 mb-lg-4">
+											<!-- <button type="submit" class="btn btn-primary btn-lg"
+												id="registerButton">Register</button> -->
+											<button type="button" class="btn btn-primary btn-lg"
+												id="registerButton">Register</button>
+										</div>
+									</div>
+									</div>
+									
+										
+
+										
+										
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				
+				</div>
+		<!-- 		<div class="col-lg-12 col-xl-11">
+					<div class="card text-black" style="border-radius: 25px;">
+						<div class="card-body p-md-5">
+							<div class="row justify-content-center" style="margin: 5% 0%;">
+								<div class="col-md-6">
+									<img
+										src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+										class="img-fluid" alt="Sample image" style="margin: 50% 0%">
+								</div>
+								<div class="col-md-6">
+									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign
+										up</p>
+									<form id="regForm"
+										class="mx-1 mx-md-4">
+										Name input
+										<div class="d-flex flex-row align-items-center mb-4">
+											<div class="form-outline flex-fill mb-0">
+												<label class="form-label">Your Name</label><span
+													class="text-danger">*</span> <input type="text"
+													class="form-control" id="name" name="name" required />
+												<div class="text-danger" id="nameError"></div>
+											</div>
+										</div>
+										Email input
+										<div class="d-flex flex-row align-items-center mb-4">
+											<div class="form-outline flex-fill mb-0">
+												<label class="form-label">Your Email</label><span
+													class="text-danger">*</span> <input type="email"
+													class="form-control" id="email" name="email" required />
+												<div class="text-danger" id="emailError"></div>
+											</div>
+										</div>
+										Number input
+										<div class="d-flex flex-row align-items-center mb-4">
+											<div class="form-outline flex-fill mb-0">
+												<label class="form-label">Your Number</label><span
+													class="text-danger">*</span> <input type="number"
+													class="form-control" id="number" name="number" required />
+												<div class="text-danger" id="numberError"></div>
+											</div>
+										</div>
+
+										Field input
+										<div class="d-flex flex-row align-items-center mb-4">
+											<div class="form-outline flex-fill mb-0">
+												<label class="form-label"> Interested Field</label><span
+													class="text-danger">*</span> 
+													<select class="form-control" id="field" name="field" required >
+														<option value="" disabled selected>Select Field</option>
+													</select>
+												<div class="text-danger" id="fieldError"></div>
+											</div>
+										</div>
+
+										Password input
+										<div class="d-flex flex-row align-items-center mb-4">
+											<div class="form-outline flex-fill mb-0">
+												<label class="form-label">Password</label><span
+													class="text-danger">*</span> <input type="password"
+													class="form-control" id="password" name="password" required />
+												<div class="text-danger" id="passwordError"></div>
+											</div>
+										</div>
+										Repeat Password input
+										<div class="d-flex flex-row align-items-center mb-4">
+											<div class="form-outline flex-fill mb-0">
+												<label class="form-label">Repeat your password</label><span
+													class="text-danger">*</span> <input type="password"
+													class="form-control" id="repeatPassword" required />
+												<div class="text-danger" id="repeatPasswordError"></div>
+											</div>
+										</div>
 										<div class="text-center" style="margin-bottom: 10px;">
 											<a href="login.jsp">Already have an account? Login here.</a>
 										</div>
 
 										<input type="hidden" name="actiontype" value="add" />
+										<input type="hidden" name="hashedPw" id="hashedPw" />
 
 										<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-											<!-- <button type="submit" class="btn btn-primary btn-lg"
-												id="registerButton">Register</button> -->
+											<button type="submit" class="btn btn-primary btn-lg"
+												id="registerButton">Register</button>
 											<button type="button" class="btn btn-primary btn-lg"
 												id="registerButton">Register</button>
 										</div>
@@ -130,17 +282,12 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
+			</section>
 		</div>
-	</section>
+	
 
-	<!-- The modal popup -->
-	<div id="popupContainer" class="popup-container">
-		<div class="popup-content">
-			<div class="spinner"></div>
-		</div>
-	</div>
 	
 	<footer class="footer">
 		<div class="text-center p-3"
@@ -149,6 +296,14 @@
 		</div>
 	</footer>
 
+
+	<!-- md5 hashing -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
+	<!-- ajax -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- alert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<script>
     document.addEventListener('DOMContentLoaded', function () { 
@@ -283,25 +438,72 @@
         	emailError.innerHTML = '';
         	numberError.innerHTML = '';
         	passwordError.innerHTML = '';
+        	fieldError.innerHTML = '';
         
         	
             if (password !== repeatPassword) {
                 repeatPasswordError.innerHTML = '<p>Passwords do not match.</p>';
               } else {
                 repeatPasswordError.innerHTML = '';
-                registerForm.submit();
                 
-                var popupContainer = document.getElementById('popupContainer');
-                popupContainer.style.display = 'block';
-
-                setTimeout(function () {
-                    popupContainer.style.display = 'none';
-				}, 2000);
-              }
+                const hashedPw =md5(password);
+                
+                $.ajax({
+                    url: "http://localhost:8080/ams/jobseeker",
+                    type: "POST",
+                    data: {
+                      email: email,
+                      actiontype: "add",
+                      password: hashedPw,
+                      number: number,
+                      name: name,
+                      field: field
+                    },
+                    success: function(response) {
+                      console.log("Success:", response);
+                      
+                      Swal.fire({
+                          icon: 'success',
+                          title: 'Success!',
+                          text: 'Registration successful!',
+                          confirmButtonColor: '#3085d6',
+                          confirmButtonText: 'OK'
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+                            window.location.href = 'login.jsp';
+                          }
+                        });
+                      
+                    },
+                    error: function(xhr, status, error) {
+                      if (xhr.status === 400) {
+                    	  Swal.fire({
+                              icon: 'error',
+                              title: 'Failed',
+                              text: 'There is an existing job seeker for this email!',
+                              confirmButtonColor: '#3085d6',
+                              confirmButtonText: 'OK'
+                            });
+                      } else if (xhr.status === 500) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Failed',
+                            text: 'Internal Server Error',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'OK'
+                          });
+                      } else {
+                        console.log("Other Error:", error);
+                      }
+                    }
+                  });
+              } 
+             
         }
       }); 
   
     });
+    
     
     
     function isValidEmail(email) {

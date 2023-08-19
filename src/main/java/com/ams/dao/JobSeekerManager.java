@@ -17,4 +17,6 @@ public interface JobSeekerManager {
 	public JobSeeker fetchSingleJobSeeker(int jobSeekerId) throws SQLException, ClassNotFoundException;
 	
 	public List<JobSeeker> fetchAllJobSeekers() throws SQLException, ClassNotFoundException;
+	
+	public JobSeeker loginJobSeeker(String jobSeekerEmail, String jobSeekerPasssword) throws SQLException, ClassNotFoundException;
 }

@@ -3,39 +3,66 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>JobSeekerController</servlet-name>
-  	<display-name>JobSeekerController</display-name>
-  	<description></description>
-  	<servlet-class>com.ams.controller.JobSeekerController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>AdminController</servlet-name>
-  	<display-name>AdminController</display-name>
-  	<description></description>
-  	<servlet-class>com.ams.controller.AdminController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>SendEmailServlet</servlet-name>
-  	<display-name>SendEmailServlet</display-name>
-  	<description></description>
-  	<servlet-class>com.ams.controller.SendEmailServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-  	<servlet-name>JobSeekerController</servlet-name>
-  	<url-pattern>/register</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>AdminController</servlet-name>
-  	<url-pattern>/AdminController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>AdminController</servlet-name>
-  	<url-pattern>/registeradmin</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>SendEmailServlet</servlet-name>
-  	<url-pattern>/SendEmailServlet</url-pattern>
-  </servlet-mapping>
+	<display-name>Archetype Created Web Application</display-name>
+
+	<servlet>
+		<servlet-name>JobSeekerController</servlet-name>
+		<display-name>JobSeekerController</display-name>
+		<description></description>
+		<servlet-class>com.ams.controller.JobSeekerController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AdminController</servlet-name>
+		<display-name>AdminController</display-name>
+		<description></description>
+		<servlet-class>com.ams.controller.AdminController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>AppointmentController</servlet-name>
+		<display-name>AppointmentController</display-name>
+		<description></description>
+		<servlet-class>com.ams.controller.AppointmentController</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>getAllSerlet</servlet-name>
+		<display-name>getAllSerlet</display-name>
+		<description></description>
+		<servlet-class>com.ams.controller.getAll</servlet-class>
+	</servlet>
+	
+	
+
+
+	<!--JobSeekerController mapping -->
+	<servlet-mapping>
+		<servlet-name>JobSeekerController</servlet-name>
+		<url-pattern>/jobseeker</url-pattern>
+	</servlet-mapping>
+
+
+	<!--AdminController mapping -->
+	<servlet-mapping>
+		<servlet-name>AdminController</servlet-name>
+		<url-pattern>/AdminController</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminController</servlet-name>
+		<url-pattern>/registeradmin</url-pattern>
+	</servlet-mapping>
+
+
+	<!--AppointmentController mapping -->
+	<servlet-mapping>
+		<servlet-name>AppointmentController</servlet-name>
+		<url-pattern>/appointment</url-pattern>
+	</servlet-mapping>
+
+
+	<!--getAllSerlet mapping -->
+	<servlet-mapping>
+		<servlet-name>getAllSerlet</servlet-name>
+		<url-pattern>/getAllSerlet</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>

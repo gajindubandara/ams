@@ -108,6 +108,7 @@ public class JobSeekerManagerImpl implements JobSeekerManager {
 			js.setEmail(rs.getString("email"));
 			js.setNumber(rs.getString("number"));
 			js.setField(rs.getString("field"));
+			js.setPassword(rs.getString("password"));
 		}
 		
 		ps.close();
@@ -122,7 +123,7 @@ public class JobSeekerManagerImpl implements JobSeekerManager {
 		String query = "SELECT * FROM job_seekers";
 		Statement st = connection.createStatement();
 		
-		List<JobSeeker> productList = new ArrayList<JobSeeker>();
+		List<JobSeeker> list = new ArrayList<JobSeeker>();
 		
 		ResultSet rs = st.executeQuery(query);
 		while(rs.next()) {
@@ -134,13 +135,40 @@ public class JobSeekerManagerImpl implements JobSeekerManager {
 			js.setNumber(rs.getString("number"));
 			js.setField(rs.getString("field"));
 			
-			productList.add(js);
+			list.add(js);
 		}
 		
 		st.close();
 		connection.close();
 		
-		return productList;
+		return list;
+	}
+
+	@Override
+	public JobSeeker loginJobSeeker(String jobSeekerEmail,String jobSeekerPassword) throws SQLException, ClassNotFoundException {
+		Connection connection = getConnection();
+		String query = "SELECT * FROM job_seekers WHERE email=?  AND password=?";
+		
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setString(1, jobSeekerEmail);
+		ps.setString(2, jobSeekerPassword);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		JobSeeker js =new JobSeeker();
+		
+		while(rs.next()) {
+			js.setId(rs.getInt("seeker_id"));
+			js.setName(rs.getString("name"));
+			js.setEmail(rs.getString("email"));
+			js.setNumber(rs.getString("number"));
+			js.setField(rs.getString("field"));
+			js.setPassword(rs.getString("password"));
+		}
+		
+		ps.close();
+		connection.close();		
+		return js;
 	}
 
 }

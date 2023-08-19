@@ -19,6 +19,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+	
 <title>Manage Consultants</title>
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -83,6 +84,10 @@
 													</div>
 												</div>
 
+											</div>
+											<div class="col-md-6">
+												<div class="row">
+												
 												<!-- Field input -->
 												<div class="d-flex flex-row align-items-center mb-4">
 													<div class="form-outline flex-fill mb-0">
@@ -107,23 +112,20 @@
 														<div class="text-danger" id="countryError"></div>
 													</div>
 												</div>
-
-											</div>
-											<div class="col-md-6">
-												<div class="row">
-													<div class="d-flex flex-row align-items-center mb-4">
+												
+													<!-- <div class="d-flex flex-row align-items-center mb-4">
 														<div class="form-outline flex-fill mb-0">
 															<label for="Date">Select A Date</label><span
 																class="text-danger">*</span>
 															<div class="text-danger" id="dateError"></div>
 														</div>
-													</div>
+													</div> -->
 
-													<div class="col-md-6">
+													<!-- <div class="col-md-6">
 														<h4 style="font-weight: bolder;">
 															<input type="checkbox" id="saturdayCheckbox" /> Saturday
 														</h4>
-														<!-- Start time input -->
+														Start time input
 														<div class="d-flex flex-row align-items-center mb-4">
 															<div class="form-outline flex-fill mb-0">
 																<label class="form-label"> Start Time</label><span
@@ -133,7 +135,7 @@
 															</div>
 														</div>
 
-														<!-- End time input -->
+														End time input
 														<div class="d-flex flex-row align-items-center mb-4">
 															<div class="form-outline flex-fill mb-0">
 																<label class="form-label"> End Time</label><span
@@ -142,12 +144,12 @@
 																<div class="text-danger" id="endTimeSatError"></div>
 															</div>
 														</div>
-													</div>
-													<div class="col-md-6">
+													</div> -->
+													<!-- <div class="col-md-6">
 														<h4 style="font-weight: bolder;">
 															<input type="checkbox" id="sundayCheckbox" /> Sunday
 														</h4>
-														<!-- Start time input -->
+														Start time input
 														<div class="d-flex flex-row align-items-center mb-4">
 															<div class="form-outline flex-fill mb-0">
 																<label class="form-label"> Start Time</label><span
@@ -157,7 +159,7 @@
 															</div>
 														</div>
 
-														<!-- End time input -->
+														End time input
 														<div class="d-flex flex-row align-items-center mb-4">
 															<div class="form-outline flex-fill mb-0">
 																<label class="form-label"> End Time</label><span
@@ -166,13 +168,14 @@
 																<div class="text-danger" id="endTimeSunError"></div>
 															</div>
 														</div>
-													</div>
+													</div> -->
 													
 													<input type="hidden" name="dates" id="dates"  />
 													<input type="hidden" name="slots" id="slots"  />
 													<input type="hidden" name="password" id="password" value="12345"  />
 													<input type="hidden" name="actiontype" value="add" />
 													<span>*Note - Default password is - 12345</span>
+													<br>
 													<div class="d-flex justify-content-end mx-4 mb-3 mb-lg-4">
 														<button type="button" class="btn btn-primary btn-lg" style="margin-right:23px"
 															id="registerButton">Register</button>
@@ -233,6 +236,10 @@
 		</div>
 	</footer>
 	<script>
+	
+	
+	</script>
+	<script>
     document.addEventListener('DOMContentLoaded', function() {
         const registerForm = document.getElementById('registerForm');
         const nameInput = document.getElementById('name');
@@ -247,14 +254,14 @@
         const countryError = document.getElementById('countryError');
         const dateError = document.getElementById('dateError'); // Added dateError
         const registerButton = document.getElementById('registerButton');
-        const saturdayCheckbox = document.getElementById('saturdayCheckbox');
+        /* const saturdayCheckbox = document.getElementById('saturdayCheckbox');
         const sundayCheckbox = document.getElementById('sundayCheckbox');
         const startTimeSat = document.getElementById('startTimeSat');
         const endTimeSat = document.getElementById('endTimeSat');
         const startTimeSun = document.getElementById('startTimeSun');
-        const endTimeSun = document.getElementById('endTimeSun');
+        const endTimeSun = document.getElementById('endTimeSun'); */
 
-        saturdayCheckbox.addEventListener('change', function() {
+        /* saturdayCheckbox.addEventListener('change', function() {
             startTimeSat.disabled = !saturdayCheckbox.checked;
             endTimeSat.disabled = !saturdayCheckbox.checked;
         });
@@ -262,7 +269,7 @@
         sundayCheckbox.addEventListener('change', function() {
             startTimeSun.disabled = !sundayCheckbox.checked;
             endTimeSun.disabled = !sundayCheckbox.checked;
-        });
+        }); */
 
         
         const countries = [
@@ -373,10 +380,10 @@
             const number = numberInput.value;
             const field = fieldInput.value;
             const country = countryInput.value;
-            const startTimeSatValue = startTimeSat.value;
+          /*   const startTimeSatValue = startTimeSat.value;
             const endTimeSatValue = endTimeSat.value;
             const startTimeSunValue = startTimeSun.value;
-            const endTimeSunValue = endTimeSun.value;
+            const endTimeSunValue = endTimeSun.value; */
 
             // Reset error messages
             nameError.innerHTML = '';
@@ -384,7 +391,7 @@
             numberError.innerHTML = '';
             fieldError.innerHTML = '';
             countryError.innerHTML = '';
-            dateError.innerHTML = '';
+            /* dateError.innerHTML = ''; */
 
             // Validation logic
             if (!name || !email || !number || !field || !country) {
@@ -418,12 +425,12 @@
                 }
                 
             } else {
-                if (!sundayCheckbox.checked && !saturdayCheckbox.checked) {
+                /* if (!sundayCheckbox.checked && !saturdayCheckbox.checked) {
                     dateError.textContent = 'Date is required';
-                } else {
-                    dateError.textContent = '';
+                } else { */
+                 /*    dateError.textContent = ''; */
                     
-                	if (sundayCheckbox.checked) {
+                	/* if (sundayCheckbox.checked) {
 						if (!startTimeSunValue) {
 							document
 									.getElementById("startTimeSunError").textContent = "Start Time is required.";
@@ -447,8 +454,8 @@
                     	  {
                     		  document.getElementById("endTimeSunError").textContent = "";
                     	  }
-					}
-					if (saturdayCheckbox.checked) {
+					} */
+					/* if (saturdayCheckbox.checked) {
 						if (!startTimeSatValue) {
 							document
 									.getElementById("startTimeSatError").textContent = "Start Time is required.";
@@ -472,7 +479,7 @@
                     	  {
                     		  document.getElementById("endTimeSatError").textContent = "";
                     	  }
-					}
+					} */
 
                     // Log all the details
                     console.log('Name:', name);
@@ -480,14 +487,14 @@
                     console.log('Number:', number);
                     console.log('Field:', field);
                     console.log('Country:', country);
-                    console.log('Saturday Checked:', saturdayCheckbox.checked);
+                    /* console.log('Saturday Checked:', saturdayCheckbox.checked);
                     console.log('Sunday Checked:', sundayCheckbox.checked);
                     console.log('Start Time (Saturday):', startTimeSatValue);
                     console.log('End Time (Saturday):', endTimeSatValue);
                     console.log('Start Time (Sunday):', startTimeSunValue);
-                    console.log('End Time (Sunday):', endTimeSunValue);
+                    console.log('End Time (Sunday):', endTimeSunValue); */
                     
-                    var timeSlotsSatArray;
+                    /* var timeSlotsSatArray;
                     var timeSlotsSunArray;
                     var timeSlots=[];
                     
@@ -503,24 +510,23 @@
                     	    
                     	    const timeSlotsForSunday = { day: 'Sunday',startTime:startTimeSunValue,endTime:endTimeSunValue, slots: timeSlotsSunArray };
                     	    timeSlots.push(timeSlotsForSunday);
-                    	} 
+                    	}  */
                     
                     	
-                    const jsonStringSlots = JSON.stringify(timeSlots);
+/*                     const jsonStringSlots = JSON.stringify(timeSlots); */
                     /* console.log("timeSlots",jsonStringSlots); */
                  
-                    var availableTimeSlots = [];
+                   /*  var availableTimeSlots = [];
 
                     timeSlots.forEach(function(slot) {
                       var timeSlot = slot.day + " " + slot.startTime + " - " + slot.endTime;
                       availableTimeSlots.push(timeSlot);
                     });
                     
-                    const jsonStringDates = JSON.stringify(availableTimeSlots);
-                    /* console.log(availableTimeSlots); */
-                    
+                    const jsonStringDates = JSON.stringify(availableTimeSlots); */
+                   /*  
                     registerForm.elements['dates'].value = jsonStringDates;
-                    registerForm.elements['slots'].value = jsonStringSlots;
+                    registerForm.elements['slots'].value = jsonStringSlots; */
                     registerForm.submit();
                     
                     var popupContainer = document.getElementById('popupContainer');
@@ -529,8 +535,17 @@
                     setTimeout(function () {
                         popupContainer.style.display = 'none';
     				}, 2000);
-   
-                }
+                    
+                    
+                    
+                    
+                   /*  setTimeout(removeInnerHTML, 3000); 
+                    function removeInnerHTML() {
+                        var element = document.getElementById('response');
+                        element.innerHTML = '';
+                    }
+    */
+                /* } */
             }
         });
         

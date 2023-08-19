@@ -29,15 +29,13 @@ public class AdminManagerImpl implements AdminManager {
 	public boolean addAdmin(Admin admin) throws SQLException, ClassNotFoundException {
 		Connection connection = getConnection();
 
-		String query = "INSERT INTO admins  (name, email,number,password,field,dates,slots) VALUES (?,?,?,?,?,?,?)";
+		String query = "INSERT INTO admins  (name, email,number,password,field) VALUES (?,?,?,?,?)";
 		PreparedStatement ps = connection.prepareStatement(query);
 		ps.setString(1, admin.getName());
 		ps.setString(2, admin.getEmail());
 		ps.setString(3, admin.getNumber());
 		ps.setString(4, admin.getPassword());
 		ps.setString(5, admin.getField());
-		ps.setString(6, admin.getDates());
-		ps.setString(7, admin.getSlots());
 
 		boolean result = false;
 		
@@ -52,7 +50,7 @@ public class AdminManagerImpl implements AdminManager {
 	@Override
 	public boolean editAdmin(Admin admin) throws SQLException, ClassNotFoundException {
 		Connection connection = getConnection();
-		String query = "UPDATE admins SET name=?, email=?,number=?,password=?,field=?,dates=?,slots=? WHERE admin_id=?";
+		String query = "UPDATE admins SET name=?, email=?,number=?,password=?,field=? WHERE admin_id=?";
 		
 		PreparedStatement ps = connection.prepareStatement(query);
 		ps.setString(1, admin.getName());
@@ -60,9 +58,7 @@ public class AdminManagerImpl implements AdminManager {
 		ps.setString(3, admin.getNumber());
 		ps.setString(4, admin.getPassword());
 		ps.setString(5, admin.getField());
-		ps.setString(6, admin.getDates());
-		ps.setString(7, admin.getSlots());
-		ps.setInt(8, admin.getId());
+		ps.setInt(6, admin.getId());
 		
 		boolean result = false;		
 		if(ps.executeUpdate() > 0)
@@ -111,8 +107,6 @@ public class AdminManagerImpl implements AdminManager {
 			admin.setEmail(rs.getString("email"));
 			admin.setNumber(rs.getString("number"));
 			admin.setField(rs.getString("field"));
-			admin.setDates(rs.getString("dates"));
-			admin.setSlots(rs.getString("slots"));;
 		}
 		
 		ps.close();
@@ -122,12 +116,12 @@ public class AdminManagerImpl implements AdminManager {
 
 	@Override
 	public List<Admin> fetchAllAdmins() throws SQLException, ClassNotFoundException {
-Connection connection = getConnection();
+		Connection connection = getConnection();
 		
 		String query = "SELECT * FROM admins";
 		Statement st = connection.createStatement();
 		
-		List<Admin> productList = new ArrayList<Admin>();
+		List<Admin> list = new ArrayList<Admin>();
 		
 		ResultSet rs = st.executeQuery(query);
 		while(rs.next()) {
@@ -138,16 +132,14 @@ Connection connection = getConnection();
 			admin.setEmail(rs.getString("email"));
 			admin.setNumber(rs.getString("number"));
 			admin.setField(rs.getString("field"));
-			admin.setDates(rs.getString("dates"));
-			admin.setSlots(rs.getString("slots"));;
 			
-			productList.add(admin);
+			list.add(admin);
 		}
 		
 		st.close();
 		connection.close();
 		
-		return productList;
+		return list;
 	}
 
 }

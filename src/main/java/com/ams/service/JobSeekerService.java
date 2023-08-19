@@ -47,4 +47,8 @@ public class JobSeekerService {
 	public List<JobSeeker> fetchAllJobSeekers() throws ClassNotFoundException, SQLException {
 		return getJobSeekerManager().fetchAllJobSeekers();
 	}
+	
+	public JobSeeker loginJobSeeker(String jobSeekerEmail, String jobSeekerPassword) throws ClassNotFoundException, SQLException {
+		return getJobSeekerManager().loginJobSeeker(jobSeekerEmail, jobSeekerPassword);
+	}
 }
