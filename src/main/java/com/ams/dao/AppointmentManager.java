@@ -13,7 +13,7 @@ public interface AppointmentManager {
 	
 	public boolean changeAppointmentState(Appointment app) throws SQLException, ClassNotFoundException;
 	
-//	public boolean deleteAppointment(int id) throws SQLException, ClassNotFoundException;
+	public boolean deleteAppointment(int id) throws SQLException, ClassNotFoundException;
 	
 	public boolean cancelAppointment(int id) throws SQLException, ClassNotFoundException;
 	

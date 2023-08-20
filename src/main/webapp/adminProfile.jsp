@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,16 +25,17 @@
 
 <!-- Your custom CSS -->
 <link rel="stylesheet" href="styles.css">
-<title>The Jobs | Profile</title>
+<title>The Jobs | Admin Profile</title>
+<title>Insert title here</title>
 </head>
 <body>
-<script src="main.js"></script>
+<script src="admin.js"></script>
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			handleUserSession();
 		});
 	</script>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container">
 			<a class="navbar-brand" href="#"> <svg width="30" height="30"
 					fill="#007bff" viewBox="0 0 24 24"
@@ -52,19 +53,17 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item" id="indexLink"><a class="nav-link" href="index.jsp">Home</a>
+					<li class="nav-item" id="dashboardLink"><a class="nav-link" href="adminDashboard.jsp">Dashboard</a>
 					</li>
-					<li class="nav-item" id="dashboardLink"><a class="nav-link" href="userDashboard.jsp">Dashboard</a>
-					</li>
-					<li class="nav-item  active" id="profileLink"><a class="nav-link" href="#">Profile </a></li>
-					<li class="nav-item" id="regLink"><a class="nav-link" href="register.jsp">Register </a></li>
-					<li class="nav-item" id="loginLink"><a class="nav-link" href="login.jsp">Login </a></li>
+					<li class="nav-item " id="dateLink"><a class="nav-link" href="adminDates.jsp">Dates </a></li>
+										<li class="nav-item active" id="profileLink"><a class="nav-link" href="#">Profile </a></li>
+					<li class="nav-item " id="loginLink"><a class="nav-link" href="adminLogin.jsp">Login </a></li>
 					<li class="nav-item" id="logoutLink"><a class="nav-link" href="#">Logout </a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="container" style="margin-top: 80px;">
+<div class="container" style="margin-top: 80px;">
 		<div class="card" style="border-radius: 25px;">
 			<div class="card-body p-md-5">
 				<h1 class="card-title">My Profile</h1>
@@ -85,7 +84,8 @@
 										<h5 class="my-3" id="profile-name"></h5>
 										<p class="text-muted mb-1" id="profile-email"></p>
 										<p class="text-muted mb-1" id="profile-phone"></p>
-										<p class="text-muted mb-4" id="profile-field"></p>
+										<p class="text-muted mb-1" id="profile-field"></p>
+										<p class="text-muted mb-4" id="profile-country"></p>
 										<div class="d-flex justify-content-center mb-2">
 											<button type="button" style="margin-right: 5px;"
 												class="btn btn-primary" id="update-button">Update</button>
@@ -133,6 +133,18 @@
 														<option value="" disabled selected>Select Field</option>
 													</select>
 												<div class="text-danger" id="fieldError"></div>
+											</div>
+										</div>
+										
+										<!-- Country input -->
+										<div class="d-flex flex-row align-items-center mb-4">
+											<div class="form-outline flex-fill mb-0">
+												<label class="form-label"> Country</label><span
+													class="text-danger">*</span> 
+													<select class="form-control" id="country" name="country" required >
+														<option value="" disabled selected>Select Field</option>
+													</select>
+												<div class="text-danger" id="countryError"></div>
 											</div>
 										</div>
 									<div class="row" style="margin: 60px">
@@ -217,12 +229,13 @@
 	<!-- alert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
-	var user = JSON.parse(sessionStorage.getItem("jobSeeker"));
-	/*   console.log(user); */
+	var user = JSON.parse(sessionStorage.getItem("admin"));
+	console.log(user);
 	const displayName = document.getElementById('profile-name');
 	const displayEmail = document.getElementById('profile-email');
 	const displayNumber = document.getElementById('profile-phone');
 	const displayField = document.getElementById('profile-field');
+	const displayCountry = document.getElementById('profile-country');
 
 
 	const profileSection = document.getElementById('profile-section');
@@ -239,10 +252,12 @@
 	const emailInput = document.getElementById('email');
 	const numberInput = document.getElementById('number');
 	const fieldInput = document.getElementById('field');
+	const countryInput = document.getElementById('country');
 	const nameError = document.getElementById('nameError');
 	const emailError = document.getElementById('emailError');
 	const numberError = document.getElementById('numberError');
 	const fieldError = document.getElementById('fieldError');
+	const countryError = document.getElementById('countryError');
 
 	const currentPasswordInput = document.getElementById('currentPassword');
 	const passwordInput = document.getElementById('password');
@@ -255,9 +270,37 @@
 	var responseEmail;
 	var responseNumber;
 	var responseField;
+	var responseCountry;
 	var responsePassword;
 
-
+	const countries = [
+		  'Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan',
+		  'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi',
+		  'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo', 'Costa Rica', 'Cote d\'Ivoire', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic',
+		  'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic',
+		  'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia',
+		  'Fiji', 'Finland', 'France',
+		  'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana',
+		  'Haiti', 'Honduras', 'Hungary',
+		  'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy',
+		  'Jamaica', 'Japan', 'Jordan',
+		  'Kazakhstan', 'Kenya', 'Kiribati', 'Korea, North', 'Korea, South', 'Kosovo', 'Kuwait', 'Kyrgyzstan',
+		  'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg',
+		  'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar (Burma)',
+		  'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Macedonia', 'Norway',
+		  'Oman',
+		  'Pakistan', 'Palau', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal',
+		  'Qatar',
+		  'Romania', 'Russia', 'Rwanda',
+		  'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria',
+		  'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu',
+		  'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan',
+		  'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam',
+		  'Yemen',
+		  'Zambia', 'Zimbabwe'
+		];
+	
+	
 	const fields = [
 		'Advertising',
 		'Agriculture',
@@ -315,6 +358,7 @@
 	];
 
 	const selectField = document.getElementById('field');
+	const selectCountry = document.getElementById('country');
 
 	fields.forEach(field => {
 		const fieldOption = document.createElement('option');
@@ -322,30 +366,41 @@
 		fieldOption.textContent = field;
 		selectField.appendChild(fieldOption);
 	});
+	
+	countries.forEach(country => {
+		const fieldOption = document.createElement('option');
+		fieldOption.value = country;
+		fieldOption.textContent = country;
+		selectCountry.appendChild(fieldOption);
+	});
 
 
 
 
 	$.ajax({
-		url: "http://localhost:8080/ams/jobseeker",
+		url: "http://localhost:8080/ams/admin",
 		type: "GET",
         data: {
-          seekerId: user.id,
-          actiontype: "getUser"
+          adminId: user.id,
+          actiontype: "getAdmin"
         },
 		dataType: "json",
 		success: function(response) {
+			console.log(response);
 			//Update the HTML tags with the fetched data
 			responseName = response.name;
 			responseEmail = response.email;
 			responseNumber = response.number;
 			responseField = response.field;
+			responseCountry = response.country;
 			responsePassword = response.password;
 
 			displayName.innerHTML = response.name;
 			displayEmail.innerHTML = response.email;
 			displayNumber.innerHTML = response.number;
 			displayField.innerHTML = response.field;
+			displayCountry.innerHTML = response.country;
+			
 		},
 		error: function(xhr, status, error) {
 			console.log("Error fetching data:", error);
@@ -365,6 +420,7 @@
 		emailInput.value = responseEmail;
 		numberInput.value = responseNumber;
 		fieldInput.value = responseField;
+		countryInput.value = responseCountry;
 
 
 	}
@@ -393,8 +449,9 @@
 		const email = emailInput.value;
 		const number = numberInput.value;
 		const field = fieldInput.value;
+		const country = countryInput.value;
 
-		if (!name || !email || !number || !field) {
+		if (!name || !email || !number || !field ||!country) {
 			if (!name) {
 				nameError.innerHTML = '<p>Name is required.</p>';
 			} else {
@@ -419,8 +476,13 @@
 			} else {
 				fieldError.innerHTML = '';
 			}
+			if (!country) {
+				countryError.innerHTML = '<p>Country is required.</p>';
+			} else {
+				countryError.innerHTML = '';
+			}
 		} else {
-			if (name === responseName && email === responseEmail && number === responseNumber && field === responseField) {
+			if (name === responseName && email === responseEmail && number === responseNumber && field === responseField && country===responseCountry) {
 				Swal.fire({
 					icon: 'error',
 					text: 'There is nothing to update!',
@@ -431,7 +493,7 @@
 
 			} else {
 				$.ajax({
-					url: "http://localhost:8080/ams/jobseeker",
+					url: "http://localhost:8080/ams/admin",
 					type: "POST",
 					data: {
 						email: email,
@@ -440,6 +502,7 @@
 						number: number,
 						name: name,
 						field: field,
+						country: country,
 						id: user.id
 					},
 					success: function(response) {
@@ -453,7 +516,7 @@
 							confirmButtonText: 'OK'
 						}).then((result) => {
 							if (result.isConfirmed) {
-								window.location.href = 'userProfile.jsp';
+								window.location.href = 'adminProfile.jsp';
 							}
 						});
 
@@ -463,7 +526,7 @@
 							Swal.fire({
 								icon: 'error',
 								title: 'Failed',
-								text: 'There is an existing job seeker for this email!',
+								text: 'There is an existing admin for this email!',
 								confirmButtonColor: '#3085d6',
 								confirmButtonText: 'OK'
 							});
@@ -526,7 +589,7 @@
 				} else {
 					const newHashedPW = md5(password)
 					$.ajax({
-						url: "http://localhost:8080/ams/jobseeker",
+						url: "http://localhost:8080/ams/admin",
 						type: "POST",
 						data: {
 							email: responseEmail,
@@ -535,6 +598,7 @@
 							number: responseNumber,
 							name: responseName,
 							field: responseField,
+							country: responseCountry,
 							id: user.id
 						},
 						success: function(response) {
@@ -548,7 +612,7 @@
 								confirmButtonText: 'OK'
 							}).then((result) => {
 								if (result.isConfirmed) {
-									window.location.href = 'userProfile.jsp';
+									window.location.href = 'adminProfile.jsp';
 								}
 							});
 

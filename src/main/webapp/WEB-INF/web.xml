@@ -29,6 +29,12 @@
 		<description></description>
 		<servlet-class>com.ams.controller.getAll</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>SendEmailServlet</servlet-name>
+		<display-name>SendEmailServlet</display-name>
+		<description></description>
+		<servlet-class>com.ams.controller.SendEmailServlet</servlet-class>
+	</servlet>
 	
 	
 
@@ -41,6 +47,10 @@
 
 
 	<!--AdminController mapping -->
+	<servlet-mapping>
+		<servlet-name>AdminController</servlet-name>
+		<url-pattern>/admin</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>AdminController</servlet-name>
 		<url-pattern>/AdminController</url-pattern>
@@ -58,11 +68,12 @@
 	</servlet-mapping>
 
 
+
 	<!--getAllSerlet mapping -->
-	<servlet-mapping>
+	<!-- <servlet-mapping>
 		<servlet-name>getAllSerlet</servlet-name>
 		<url-pattern>/getAllSerlet</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping> -->
 
 
 </web-app>

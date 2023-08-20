@@ -2,13 +2,8 @@ package com.ams.service;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
-
-import com.ams.dao.AdminManager;
-import com.ams.dao.AdminManagerImpl;
 import com.ams.dao.AppointmentManager;
 import com.ams.dao.AppointmentManagerImpl;
-import com.ams.model.Admin;
 import com.ams.model.Appointment;
 
 public class AppointmentService {
@@ -46,6 +41,10 @@ public class AppointmentService {
 	
 	public Appointment fetchSingleApp(int id) throws ClassNotFoundException, SQLException {
 		return getAppManager().fetchSingleAppointment(id);
+	}
+	
+	public boolean deleteApp(int id) throws ClassNotFoundException, SQLException {
+		return getAppManager().deleteAppointment(id);
 	}
 	
 	public List<Appointment> fetchAllApps() throws ClassNotFoundException, SQLException {

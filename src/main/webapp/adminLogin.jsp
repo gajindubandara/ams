@@ -26,24 +26,24 @@
 
 <!-- Your custom CSS -->
 <link rel="stylesheet" href="styles.css">
-<title>The Jobs | Login</title>
+<title>The Jobs | Admin Login</title>
 </head>
 <body>
-<script>
+ <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var jobSeeker = sessionStorage.getItem("jobSeeker");
+    var admin = sessionStorage.getItem("admin");
     var dashboardLink = document.getElementById("dashboardLink");
 	var logoutLink = document.getElementById("logoutLink");
 	var loginLink = document.getElementById("loginLink");
-	var regLink = document.getElementById("regLink");
 	var profileLink = document.getElementById("profileLink");
-    if (!jobSeeker) {
+	var dateLink = document.getElementById("dateLink");
+    if (!admin) {
     	profileLink.style.display = "none";
     	dashboardLink.style.display = "none";
     	logoutLink.style.display = "none";
+    	dateLink.style.display = "none";
     	}else{
     	loginLink.style.display = "none";
-    	regLink.style.display = "none";
     	}
 });
 </script>
@@ -66,12 +66,10 @@ document.addEventListener("DOMContentLoaded", function() {
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item" id="indexLink"><a class="nav-link" href="index.jsp">Home</a>
+					<li class="nav-item" id="dashboardLink"><a class="nav-link" href="adminDashboard.jsp">Dashboard</a>
 					</li>
-					<li class="nav-item" id="dashboardLink"><a class="nav-link" href="userDashboard.jsp">Dashboard</a>
-					</li>
-					<li class="nav-item" id="profileLink"><a class="nav-link" href="userProfile.jsp">Profile </a></li>
-					<li class="nav-item" id="regLink"><a class="nav-link" href="register.jsp">Register </a></li>
+					<li class="nav-item" id="dateLink"><a class="nav-link" href="adminDates.jsp">Dates </a></li>
+					<li class="nav-item" id="profileLink"><a class="nav-link" href="adminProfile.jsp">Profile </a></li>
 					<li class="nav-item  active" id="loginLink"><a class="nav-link" href="#">Login </a></li>
 					<li class="nav-item" id="logoutLink"><a class="nav-link" href="#">Logout </a></li>
 				</ul>
@@ -90,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						<div class="card-body">
 							<div class="row justify-content-center" style="margin: 5% 0%;">
 								<div class="col-md-12">
-									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
+									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Admin Login</p>
 
 									<form class="mx-1 mx-md-4" id="loginForm">
 										<!-- username input -->
@@ -110,10 +108,6 @@ document.addEventListener("DOMContentLoaded", function() {
 													name="password" id="password" class="form-control" required />
 												<div class="text-danger" id="passwordError"></div>
 											</div>
-										</div>
-										<div class="text-center" style="margin-bottom: 10px;">
-											<a href="register.jsp">Don't have an account? Register
-												here.</a>
 										</div>
 
 										<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -175,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
         	
         	const hashedPW =md5(password)
         	$.ajax({
-                url: "http://localhost:8080/ams/jobseeker",
+                url: "http://localhost:8080/ams/admin",
                 type: "GET",
                 data: {
                   email: email,
@@ -183,9 +177,9 @@ document.addEventListener("DOMContentLoaded", function() {
                   actiontype: "login"
                 },
                 success: function(result) {
-                	sessionStorage.setItem("jobSeeker", result);
+                	sessionStorage.setItem("admin", result);
                 	
-                	window.location.href = "userDashboard.jsp";
+                	window.location.href = "adminDashboard.jsp";
 
                 },
                 error: function(xhr, status, error) {

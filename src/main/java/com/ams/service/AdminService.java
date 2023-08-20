@@ -6,6 +6,7 @@ import java.util.List;
 import com.ams.dao.AdminManager;
 import com.ams.dao.AdminManagerImpl;
 import com.ams.model.Admin;
+import com.ams.model.JobSeeker;
 
 public class AdminService {
 
@@ -46,5 +47,9 @@ public class AdminService {
 	
 	public List<Admin> fetchAllAdmins() throws ClassNotFoundException, SQLException {
 		return getAdminManager().fetchAllAdmins();
+	}
+	
+	public Admin loginAdmin(String adminEmail, String adminPassword) throws ClassNotFoundException, SQLException {
+		return getAdminManager().loginAdmin(adminEmail, adminPassword);
 	}
 }

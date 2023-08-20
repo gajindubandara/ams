@@ -3,13 +3,12 @@ package com.ams.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
+
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import com.ams.dao.dbutils.DbDriverManager;
 import com.ams.dao.dbutils.DbDriverManagerFactory;
@@ -207,6 +206,25 @@ public class AppointmentManagerImpl implements AppointmentManager {
 		boolean result = false;		
 		if(ps.executeUpdate() > 0)
 			result = true;
+		
+		ps.close();
+		connection.close();
+		
+		return result;
+	}
+
+	@Override
+	public boolean deleteAppointment(int id) throws SQLException, ClassNotFoundException {
+		Connection connection = getConnection();
+		String query = "DELETE FROM appointment WHERE id=?";
+		
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setInt(1, id);
+		
+		boolean result = false;
+		if(ps.executeUpdate() > 0) {
+			result = true;
+		}
 		
 		ps.close();
 		connection.close();

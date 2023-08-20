@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ams.model.Admin;
+import com.ams.model.JobSeeker;
 
 
 
@@ -17,5 +18,7 @@ public boolean addAdmin(Admin admin) throws SQLException, ClassNotFoundException
 	public Admin fetchSingleAdmin(int adminId) throws SQLException, ClassNotFoundException;
 	
 	public List<Admin> fetchAllAdmins() throws SQLException, ClassNotFoundException;
+	
+	public Admin loginAdmin(String adminEmail, String adminPasssword) throws SQLException, ClassNotFoundException;
 
 }

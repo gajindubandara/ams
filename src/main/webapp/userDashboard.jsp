@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/jobs.png">
 <!-- Bootstrap 5 CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -24,7 +25,7 @@
 
 <!-- Your custom CSS -->
 <link rel="stylesheet" href="styles.css">
-<title>Dashboard</title>
+<title>The Jobs | Dashboard</title>
 
 
 </head>
@@ -45,7 +46,7 @@
 						d="M15.75 13.5h-7.5V12H.75v9.188a.562.562 0 0 0 .563.562h21.375a.562.562 0 0 0 .562-.563V12h-7.5v1.5Z"></path>
   					<path
 						d="M23.25 5.813a.563.563 0 0 0-.563-.563H18V2.625a.375.375 0 0 0-.375-.375H6.375A.375.375 0 0 0 6 2.625V5.25H1.312a.563.563 0 0 0-.562.563V10.5h22.5V5.812Zm-7.125-.563h-8.25V4.125h8.25V5.25Z"></path>
-				</svg> Job Consultancy
+				</svg> The Jobs
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
@@ -131,6 +132,7 @@
 										<th>Field</th>
 										<th>Time Slot</th>
 										<th>Created Date</th>
+										<th>Status</th>
 										<th>Actions</th>
 									</tr>
 								</thead>
@@ -254,8 +256,7 @@
 	$(document)
 	.ready(
 		function() {
-			$
-				.ajax({
+			$.ajax({
 					url: "http://localhost:8080/ams/appointment?actiontype=all",
 					method: "GET",
 					dataType: "json",
@@ -312,29 +313,24 @@
 								});
 
 							console
-								.log(matchingConsultants);
+								.log("found",matchingConsultants);
 
 							// Populate time slot options for the matching consultants
 							var availableSlotsFound = false;
 
 							matchingConsultants
-								.forEach(function(
-									consultant) {
-									var consultantDate = new Date(
-										consultant.date);
+								.forEach(function(consultant) {
+									var consultantDate = new Date(consultant.date);
 									var currentDate = new Date();
+									
+									
 
-									if (consultantDate > currentDate &&
-										consultant.state === "active") {
-										var timeSlots = consultant.slot.split(",");
-										timeSlots.forEach(function(timeSlot) {
-											var option = document
-												.createElement("option");
+									if (consultantDate > currentDate &&	consultant.state === "active") {
+											var option = document.createElement("option");
 											option.value = consultant.id;
-											option.textContent = timeSlot;
-											timeSlotDropdown
-												.appendChild(option);
-										});
+											option.textContent = consultant.slot;
+											timeSlotDropdown.appendChild(option);
+
 
 										availableSlotsFound = true;
 									}
@@ -371,10 +367,20 @@
 	
 	
 	function genrateTablData(arrayOfObjects){
+		
+		
+		//sorting to the state order
+		var stateOrder = ["active", "pending", "confirmed", "rejected", "completed"];
+		var arrayOfObjects = arrayOfObjects.sort((a, b) => {
+			  return stateOrder.indexOf(a.state) - stateOrder.indexOf(b.state);
+			});
+		
+		//getting the date for the user
 		var user = JSON.parse(sessionStorage.getItem("jobSeeker"));
-		var arrayOfObjects = arrayOfObjects.filter(function(item) {
+		arrayOfObjects = arrayOfObjects.filter(function(item) {
 			  return item.state != "active" && item.seekerId === user.id;
 			});
+		
 	    var tableBody = document.getElementById("tableBody");
 
 	    if (arrayOfObjects.length === 0) {
@@ -391,7 +397,8 @@
 	            var field = row.insertCell(1);
 	            var timeSlot = row.insertCell(2);
 	            var date = row.insertCell(3);
-	            var actionCell = row.insertCell(4);
+	            var status = row.insertCell(4);
+	            var actionCell = row.insertCell(5);
 
 
 
@@ -399,7 +406,40 @@
 	            field.textContent = obj.field;
 	            timeSlot.textContent = obj.slot;
 	            date.textContent = obj.assigned_date;
+	            /* status.textContent=obj.state; */
+	            
 
+	            var viewState = document.createElement("div");
+	            
+	           
+	            if(obj.state==="pending"){
+	            	viewState.innerHTML = `<svg width="25" height="25" fill="#e0a500" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	            		  <path d="M19.5 1.5h-15v5.25L9.563 12 4.5 17.25v5.25h15v-5.25L14.437 12 19.5 6.75V1.5Zm-6.75 9v5.25l4.266 4.5H6.938l4.312-4.5V10.5L7.5 6.75h9l-3.75 3.75Z"></path>
+	            		</svg> Pending`;
+	            }
+	            else if(obj.state==="confirmed"){
+	            	viewState.innerHTML = `<svg width="25" height="25" fill="#00d12a" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	            		  <path d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25Zm-1.781 14.643L6.44 12.694l1.115-1.003 2.625 2.916 6.225-7.414 1.15.963-7.337 8.737Z"></path>
+	            		</svg> Confirmed`;
+	            }
+	            
+	            else if(obj.state==="rejected"){
+	            	viewState.innerHTML = `<svg width="25" height="25" fill="#ff0000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	            		  <path d="M12 2.25c-5.376 0-9.75 4.374-9.75 9.75s4.374 9.75 9.75 9.75 9.75-4.374 9.75-9.75S17.376 2.25 12 2.25ZM16.06 15 15 16.06l-3-3-3 3L7.94 15l3-3-3-3L9 7.94l3 3 3-3L16.06 9l-3 3 3 3Z"></path>
+	            		</svg> Rejected`;
+	            }
+	            
+	            else if(obj.state==="completed"){
+	            	viewState.innerHTML = `<svg width="25" height="25" fill="#0061ff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	            		  <path d="M12.136 2.25c-5.484-.073-9.96 4.403-9.886 9.887.073 5.259 4.355 9.54 9.614 9.614 5.484.075 9.96-4.402 9.885-9.885-.072-5.26-4.354-9.542-9.613-9.615Zm-.787 9.023 2.416-2.766a.75.75 0 0 1 1.13.988l-2.416 2.765a.749.749 0 1 1-1.13-.987ZM9.527 15.53a.75.75 0 0 1-1.06 0l-2.248-2.25a.75.75 0 0 1 1.062-1.06l2.25 2.25a.75.75 0 0 1-.004 1.06Zm8.288-6.037-5.245 6a.75.75 0 0 1-.54.257h-.024a.75.75 0 0 1-.531-.22l-2.247-2.25a.75.75 0 0 1 1.061-1.06l1.397 1.398a.375.375 0 0 0 .547-.018l4.453-5.094a.75.75 0 0 1 1.13.988h-.001Z"></path>
+	            		</svg> Completed`;
+	            }
+	           
+	            /* viewState.innerHTML = `<svg width="25" height="25" fill="#00000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+	            	  <path d="M20.25 4.5h-4.5V3.375A1.875 1.875 0 0 0 13.875 1.5h-3.75A1.875 1.875 0 0 0 8.25 3.375V4.5h-4.5a.75.75 0 0 0 0 1.5h.797l.89 14.293c.067 1.259 1.032 2.207 2.25 2.207h8.625c1.225 0 2.17-.927 2.25-2.203L19.453 6h.797a.75.75 0 1 0 0-1.5Zm-11.223 15H9a.75.75 0 0 1-.75-.723l-.375-10.5a.75.75 0 0 1 1.5-.054l.375 10.5a.75.75 0 0 1-.723.777Zm3.723-.75a.75.75 0 1 1-1.5 0V8.25a.75.75 0 1 1 1.5 0v10.5Zm1.5-14.25h-4.5V3.375A.37.37 0 0 1 10.125 3h3.75a.371.371 0 0 1 .375.375V4.5Zm1.5 14.277a.75.75 0 0 1-.75.723h-.027a.75.75 0 0 1-.723-.777l.375-10.5a.75.75 0 0 1 1.5.054l-.375 10.5Z"></path>
+	            	</svg>` */;
+	            	
+	            status.appendChild(viewState);
 	            
 	            var editButton = document.createElement("button");
 	            editButton.className = "btn btn-danger btn-sm";
@@ -408,7 +448,7 @@
 	            	</svg>`;
 	            
 	            	            
-	            if(obj.state ==="booked"){
+	            if(obj.state ==="pending"){
 	            actionCell.appendChild(editButton);
 	            }
 	            

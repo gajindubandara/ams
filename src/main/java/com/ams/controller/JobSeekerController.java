@@ -73,7 +73,7 @@ public class JobSeekerController extends HttpServlet {
 				response.getWriter().append(jsonString);
 
 			} else {
-				message = "Invalid email ro password";
+				message = "Invalid email or password";
 				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, message);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
@@ -172,8 +172,8 @@ public class JobSeekerController extends HttpServlet {
 				response.getWriter().append(jsonString);
 
 			} else {
-				message = "Invalid email ro password";
-				response.sendError(HttpServletResponse.SC_UNAUTHORIZED, message);
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+		        response.getWriter().write("Invalid ID!");
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			message = e.getMessage();

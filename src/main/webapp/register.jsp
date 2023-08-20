@@ -6,6 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="assets/jobs.png">
 <!-- Bootstrap 5 CSS -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
@@ -25,7 +26,7 @@
 
 <!-- Your custom CSS -->
 <link rel="stylesheet" href="styles.css">
-<title>Register</title>
+<title>The Jobs | Register</title>
 </head>
 <body>
 <script>
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function() {
 						d="M15.75 13.5h-7.5V12H.75v9.188a.562.562 0 0 0 .563.562h21.375a.562.562 0 0 0 .562-.563V12h-7.5v1.5Z"></path>
   					<path
 						d="M23.25 5.813a.563.563 0 0 0-.563-.563H18V2.625a.375.375 0 0 0-.375-.375H6.375A.375.375 0 0 0 6 2.625V5.25H1.312a.563.563 0 0 0-.562.563V10.5h22.5V5.812Zm-7.125-.563h-8.25V4.125h8.25V5.25Z"></path>
-				</svg> Job Consultancy
+				</svg> The Jobs
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarNav" aria-controls="navbarNav"
@@ -192,97 +193,6 @@ document.addEventListener("DOMContentLoaded", function() {
 				
 				
 				</div>
-		<!-- 		<div class="col-lg-12 col-xl-11">
-					<div class="card text-black" style="border-radius: 25px;">
-						<div class="card-body p-md-5">
-							<div class="row justify-content-center" style="margin: 5% 0%;">
-								<div class="col-md-6">
-									<img
-										src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-										class="img-fluid" alt="Sample image" style="margin: 50% 0%">
-								</div>
-								<div class="col-md-6">
-									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign
-										up</p>
-									<form id="regForm"
-										class="mx-1 mx-md-4">
-										Name input
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Your Name</label><span
-													class="text-danger">*</span> <input type="text"
-													class="form-control" id="name" name="name" required />
-												<div class="text-danger" id="nameError"></div>
-											</div>
-										</div>
-										Email input
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Your Email</label><span
-													class="text-danger">*</span> <input type="email"
-													class="form-control" id="email" name="email" required />
-												<div class="text-danger" id="emailError"></div>
-											</div>
-										</div>
-										Number input
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Your Number</label><span
-													class="text-danger">*</span> <input type="number"
-													class="form-control" id="number" name="number" required />
-												<div class="text-danger" id="numberError"></div>
-											</div>
-										</div>
-
-										Field input
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label"> Interested Field</label><span
-													class="text-danger">*</span> 
-													<select class="form-control" id="field" name="field" required >
-														<option value="" disabled selected>Select Field</option>
-													</select>
-												<div class="text-danger" id="fieldError"></div>
-											</div>
-										</div>
-
-										Password input
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Password</label><span
-													class="text-danger">*</span> <input type="password"
-													class="form-control" id="password" name="password" required />
-												<div class="text-danger" id="passwordError"></div>
-											</div>
-										</div>
-										Repeat Password input
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Repeat your password</label><span
-													class="text-danger">*</span> <input type="password"
-													class="form-control" id="repeatPassword" required />
-												<div class="text-danger" id="repeatPasswordError"></div>
-											</div>
-										</div>
-										<div class="text-center" style="margin-bottom: 10px;">
-											<a href="login.jsp">Already have an account? Login here.</a>
-										</div>
-
-										<input type="hidden" name="actiontype" value="add" />
-										<input type="hidden" name="hashedPw" id="hashedPw" />
-
-										<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-											<button type="submit" class="btn btn-primary btn-lg"
-												id="registerButton">Register</button>
-											<button type="button" class="btn btn-primary btn-lg"
-												id="registerButton">Register</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
 			</div>
 			</section>
 		</div>
