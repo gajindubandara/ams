@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ams.model.Admin;
-import com.ams.model.JobSeeker;
 import com.ams.service.AdminService;
 import com.google.gson.Gson;
 

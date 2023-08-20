@@ -11,7 +11,6 @@ import java.util.List;
 import com.ams.dao.dbutils.DbDriverManager;
 import com.ams.dao.dbutils.DbDriverManagerFactory;
 import com.ams.model.Admin;
-import com.ams.model.JobSeeker;
 
 public class AdminManagerImpl implements AdminManager {
 	

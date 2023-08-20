@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.ams.model.Admin;
-import com.ams.model.JobSeeker;
 
 
 

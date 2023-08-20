@@ -2,7 +2,6 @@ package com.ams.dao;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
 
 import com.ams.model.Appointment;
 
