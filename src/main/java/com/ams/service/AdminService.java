@@ -6,6 +6,7 @@ import java.util.List;
 import com.ams.dao.AdminManager;
 import com.ams.dao.AdminManagerImpl;
 import com.ams.model.Admin;
+import com.ams.model.Appointment;
 
 public class AdminService {
 
@@ -50,5 +51,9 @@ public class AdminService {
 	
 	public Admin loginAdmin(String adminEmail, String adminPassword) throws ClassNotFoundException, SQLException {
 		return getAdminManager().loginAdmin(adminEmail, adminPassword);
+	}
+	
+	public boolean changeAdminState(Admin admin) throws ClassNotFoundException, SQLException {
+		return getAdminManager().changeAdminState(admin);
 	}
 }

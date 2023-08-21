@@ -35,6 +35,12 @@
 		<description></description>
 		<servlet-class>com.ams.controller.SendEmailServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>SuperAdminController</servlet-name>
+		<display-name>SuperAdminController</display-name>
+		<description></description>
+		<servlet-class>com.ams.controller.SuperAdminController</servlet-class>
+	</servlet>
 	
 	
 
@@ -45,35 +51,24 @@
 		<url-pattern>/jobseeker</url-pattern>
 	</servlet-mapping>
 
-
 	<!--AdminController mapping -->
 	<servlet-mapping>
 		<servlet-name>AdminController</servlet-name>
 		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AdminController</servlet-name>
-		<url-pattern>/AdminController</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AdminController</servlet-name>
-		<url-pattern>/registeradmin</url-pattern>
-	</servlet-mapping>
-
 
 	<!--AppointmentController mapping -->
 	<servlet-mapping>
 		<servlet-name>AppointmentController</servlet-name>
 		<url-pattern>/appointment</url-pattern>
 	</servlet-mapping>
+	
+	<!--SuperAdminController mapping -->
+	<servlet-mapping>
+		<servlet-name>SuperAdminController</servlet-name>
+		<url-pattern>/superadmin</url-pattern>
+	</servlet-mapping>
 
-
-
-	<!--getAllSerlet mapping -->
-	<!-- <servlet-mapping>
-		<servlet-name>getAllSerlet</servlet-name>
-		<url-pattern>/getAllSerlet</url-pattern>
-	</servlet-mapping> -->
 
 
 </web-app>

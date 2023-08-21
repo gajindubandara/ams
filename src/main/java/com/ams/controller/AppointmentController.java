@@ -164,14 +164,10 @@ public class AppointmentController extends HttpServlet {
 		}
 	}
 
-	private void fetchSingleApp(HttpServletRequest request, HttpServletResponse response) {
-
-	}
 
 	private void fetchAllApp(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 	        List<Appointment> item = getAppService().fetchAllAppsForReports();
-//	        request.setAttribute("app", item);
 	        
 	        Gson gson = new Gson();
 	        String jsonString = gson.toJson(item);

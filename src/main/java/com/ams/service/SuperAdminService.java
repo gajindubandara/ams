@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.ams.dao.SuperAdminManager;
 import com.ams.dao.SuperAdminManagerImpl;
+import com.ams.model.Admin;
 import com.ams.model.SuperAdmin;
 
 public class SuperAdminService {
@@ -31,6 +32,14 @@ public class SuperAdminService {
 	
 	public SuperAdmin loginSuperAdmin(String email, String password) throws ClassNotFoundException, SQLException {
 		return getSuperAdminManager().loginSuperAdmin(email, password);
+	}
+	
+	public boolean editAdmin(SuperAdmin sa) throws ClassNotFoundException, SQLException {
+		return getSuperAdminManager().editAdmin(sa);
+	}
+		
+	public SuperAdmin fetchSingleSuperAdmin(int adminId) throws ClassNotFoundException, SQLException {
+		return getSuperAdminManager().fetchSingleAdmin(adminId);
 	}
 
 }

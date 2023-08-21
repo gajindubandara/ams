@@ -60,7 +60,6 @@ public class AdminManagerImpl implements AdminManager {
 		ps.setString(3, admin.getNumber());
 		ps.setString(4, admin.getPassword());
 		ps.setString(5, admin.getField());
-//		ps.setString(6, admin.getState());
 		ps.setString(6, admin.getCountry());
 		ps.setInt(7, admin.getId());
 		
@@ -178,5 +177,25 @@ public class AdminManagerImpl implements AdminManager {
 		connection.close();		
 		return admin;
 	}
+
+	@Override
+	public boolean changeAdminState(Admin admin) throws SQLException, ClassNotFoundException {
+		Connection connection = getConnection();
+		String query = "UPDATE admins SET state=? WHERE admin_id=?";
+		
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setString(1, admin.getState());
+		ps.setInt(2, admin.getId());
+		
+		boolean result = false;		
+		if(ps.executeUpdate() > 0)
+			result = true;
+		
+		ps.close();
+		connection.close();
+		
+		return result;
+	}
+
 
 }

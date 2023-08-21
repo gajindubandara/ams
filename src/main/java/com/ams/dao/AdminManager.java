@@ -19,5 +19,7 @@ public boolean addAdmin(Admin admin) throws SQLException, ClassNotFoundException
 	public List<Admin> fetchAllAdmins() throws SQLException, ClassNotFoundException;
 	
 	public Admin loginAdmin(String adminEmail, String adminPasssword) throws SQLException, ClassNotFoundException;
+	
+	public boolean changeAdminState(Admin admin) throws SQLException, ClassNotFoundException;
 
 }
