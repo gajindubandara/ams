@@ -43,6 +43,10 @@ public class AppointmentService {
 		return getAppManager().fetchSingleAppointment(id);
 	}
 	
+	public Appointment fetchSingleAppForTestng(String slot) throws ClassNotFoundException, SQLException {
+		return getAppManager().fetchSingleAppForTesting(slot);
+	}
+	
 	public boolean deleteApp(int id) throws ClassNotFoundException, SQLException {
 		return getAppManager().deleteAppointment(id);
 	}

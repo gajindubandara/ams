@@ -104,7 +104,7 @@ public class AppointmentManagerImpl implements AppointmentManager {
 		Appointment app =new Appointment();
 		
 		while(rs.next()) {
-			app.setId(rs.getInt("seeker_id"));
+			app.setId(rs.getInt("id"));
 			app.setDate(rs.getString("date"));
 			app.setAdminId(rs.getInt("admin_id"));
 			app.setSeekerId(rs.getInt("seeker_id"));
@@ -133,7 +133,7 @@ public class AppointmentManagerImpl implements AppointmentManager {
 		while(rs.next()) {
 			
 			Appointment app =new Appointment();
-			app.setId(rs.getInt("seeker_id"));
+			app.setId(rs.getInt("id"));
 			app.setDate(rs.getString("date"));
 			app.setAdminId(rs.getInt("admin_id"));
 			app.setSeekerId(rs.getInt("seeker_id"));
@@ -230,6 +230,35 @@ public class AppointmentManagerImpl implements AppointmentManager {
 		connection.close();
 		
 		return result;
+	}
+	
+	@Override
+	public Appointment fetchSingleAppForTesting(String slot) throws SQLException, ClassNotFoundException {
+		Connection connection = getConnection();
+		String query = "SELECT * FROM appointment WHERE slot=?";
+		
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setString(1, slot);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		Appointment app =new Appointment();
+		
+		while(rs.next()) {
+			app.setId(rs.getInt("id"));
+			app.setDate(rs.getString("date"));
+			app.setAdminId(rs.getInt("admin_id"));
+			app.setSeekerId(rs.getInt("seeker_id"));
+			app.setSlot(rs.getString("slot"));
+			app.setCountry(rs.getString("country"));
+			app.setField(rs.getString("field"));
+			app.setState(rs.getString("state"));
+			app.setAssigned_date(rs.getString("assigned_date"));
+		}
+		
+		ps.close();
+		connection.close();		
+		return app;
 	}
 
 	
