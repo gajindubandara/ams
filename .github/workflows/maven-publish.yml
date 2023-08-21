@@ -24,3 +24,6 @@ jobs:
 
     - name: Run JUnit Tests
       run: mvn test
+
+    - name: Copy Dependencies
+      run: mvn dependency:copy-dependencies -DincludeScope=compile -DoutputDirectory=target/dependency
