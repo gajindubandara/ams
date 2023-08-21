@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import com.ams.dao.SuperAdminManager;
 import com.ams.dao.SuperAdminManagerImpl;
-import com.ams.model.Admin;
 import com.ams.model.SuperAdmin;
 
 public class SuperAdminService {

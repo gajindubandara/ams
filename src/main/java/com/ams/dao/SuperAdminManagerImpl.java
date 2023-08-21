@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import com.ams.dao.dbutils.DbDriverManager;
 import com.ams.dao.dbutils.DbDriverManagerFactory;
-import com.ams.model.Admin;
 import com.ams.model.SuperAdmin;
 
 public class SuperAdminManagerImpl implements SuperAdminManager {

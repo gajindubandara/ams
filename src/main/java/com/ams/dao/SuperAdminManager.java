@@ -2,7 +2,6 @@ package com.ams.dao;
 
 import java.sql.SQLException;
 
-import com.ams.model.Admin;
 import com.ams.model.SuperAdmin;
 
 public interface SuperAdminManager {

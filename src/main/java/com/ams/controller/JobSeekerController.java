@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ams.model.Appointment;
 import com.ams.model.JobSeeker;
 import com.ams.service.JobSeekerService;
 import com.google.gson.Gson;

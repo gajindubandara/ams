@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ams.model.Admin;
 import com.ams.model.SuperAdmin;
 import com.ams.service.SuperAdminService;
 import com.google.gson.Gson;
