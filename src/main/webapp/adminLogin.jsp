@@ -77,9 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
 		</div>
 	</nav>
 
-<div class="container h-100">
-	<section class="vh-100">
-		
+<div class="container" style="margin: 80px auto">
 			<div
 				class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col-md-6">
@@ -121,8 +119,6 @@ document.addEventListener("DOMContentLoaded", function() {
 					</div>
 				</div>
 			</div>
-				</section>
-			
 		</div>
 
 	<footer class="footer">
