@@ -3,16 +3,12 @@ package com.ams.service;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.ams.model.Admin;
 import com.ams.model.Appointment;
 
 class AppointmentServiceTest {
@@ -141,6 +137,108 @@ class AppointmentServiceTest {
 		boolean result = appservice.deleteApp(appID);
 
 		assertTrue(result, "This should delete the appointment");
+	}
+		
+	@Test
+	@DisplayName("Add Appointment For A Non Existing Admin Id")
+	void testI() throws ClassNotFoundException, SQLException {
+
+		Appointment app = new Appointment();
+		app.setAdminId(1);
+		app.setCountry("United Kingdom");
+		app.setField("Cybersecurity");
+		app.setSlot("0000-00-00 00:00 - 00:00");
+		app.setDate("2023-08-28");
+
+		AppointmentService appservice = AppointmentService.getAppService();
+
+		
+		try {
+			appservice.addApp(app);
+
+		} catch (SQLException e) {
+			assertEquals(SQLIntegrityConstraintViolationException.class, e.getClass(),
+					"Expected exception was not thrown.");
+		} 
+
+	}
+	
+	@Test
+	@DisplayName("Book Appointment For A Non Existing Job Seeker Id")
+	void testJ() throws ClassNotFoundException, SQLException {
+
+		Appointment app = new Appointment();
+
+		app.setSeekerId(1);
+		app.setState("pending");
+		app.setAssigned_date("2023-08-21");
+		app.setId(appID);
+
+		AppointmentService appservice = AppointmentService.getAppService();
+		
+		try {
+			appservice.bookApp(app);
+
+		} catch (SQLException e) {
+			assertEquals(SQLIntegrityConstraintViolationException.class, e.getClass(),
+					"Expected exception was not thrown.");
+		} 
+
+	}
+	
+	@Test
+	@DisplayName("Get Non Existing Appointment")
+	void testK() throws ClassNotFoundException, SQLException {
+
+		AppointmentService appservice = AppointmentService.getAppService();
+
+		Appointment app = appservice.fetchSingleAppForTestng("0000-00-00 00:00 - 00:00");
+		System.out.println(app.getId());
+		appID = app.getId();
+
+		if (!(app.getId() > 0)) {
+			app = null;
+		}
+
+		assertNull(app, "This should get the appointment");
+	}
+	
+	@Test
+	@DisplayName("Cancel A Non Existing Appointment")
+	void testL() throws ClassNotFoundException, SQLException {
+
+		AppointmentService appservice = AppointmentService.getAppService();
+
+		boolean result = appservice.cancelApp(appID);
+
+		assertFalse(result, "This should return false");
+	}
+	
+	@Test
+	@DisplayName("Change State Of A Non Existing Appointment")
+	void testM() throws ClassNotFoundException, SQLException {
+
+		Appointment app = new Appointment();
+		app.setState("confirmed");
+		app.setId(appID);
+
+		AppointmentService appservice = AppointmentService.getAppService();
+
+		boolean result = appservice.changeAppState(app);
+
+		assertFalse(result, "This should retunr false");
+
+	}
+	
+	@Test
+	@DisplayName("Delete A Non Existing Appointment")
+	void testN() throws ClassNotFoundException, SQLException {
+
+		AppointmentService appservice = AppointmentService.getAppService();
+
+		boolean result = appservice.deleteApp(appID);
+
+		assertFalse(result, "This should delete the appointment");
 	}
 
 }

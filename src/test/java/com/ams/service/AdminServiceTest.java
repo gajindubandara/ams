@@ -192,4 +192,63 @@ class AdminServiceTest {
 
 		assertTrue(result, "This should delete the user");
 	}
+	
+	
+	@Test
+	@DisplayName("Get Admin By Non Existing Id")
+	void testK() throws ClassNotFoundException, SQLException {
+
+		AdminService adminService = AdminService.getAdminService();
+
+		Admin admin = adminService.fetchSingleAdmin(adminID);
+
+		if (!(admin.getId() > 0)) {
+			admin = null;
+		}
+		assertNull(admin, "This should retirn null");
+	}
+	
+	@Test
+	@DisplayName("Edit An Admin For A Non Existing Id")
+	void testL() throws ClassNotFoundException, SQLException {
+		Admin admin = new Admin();
+		admin.setName("Test Name");
+		admin.setEmail(userEmail);
+		admin.setNumber("0766786225");
+		admin.setPassword(userPassword);
+		admin.setField("Cybersecurity");
+		admin.setState("active");
+		admin.setCountry("United Kingdom");
+		admin.setId(adminID);
+
+		AdminService adminService = AdminService.getAdminService();
+
+		boolean result = adminService.editAdmin(admin);
+
+		assertFalse(result, "This should return false");
+	}
+	
+	@Test
+	@DisplayName("Change Admin State For A Non Existing Id")
+	void testM() throws ClassNotFoundException, SQLException {
+
+		Admin admin = new Admin();
+		admin.setId(adminID);
+		admin.setState("inactive");
+
+		AdminService adminService = AdminService.getAdminService();
+		boolean result = adminService.changeAdminState(admin);
+		assertFalse(result, "This should return false");
+	}
+	
+	@Test
+	@DisplayName("Delete An Non Existing Admin")
+	void testN() throws ClassNotFoundException, SQLException {
+		System.out.println(adminID);
+		AdminService adminService = AdminService.getAdminService();
+
+		boolean result = adminService.deleteAdmin(adminID);
+
+		assertFalse(result, "This should return falser");
+	}
 }

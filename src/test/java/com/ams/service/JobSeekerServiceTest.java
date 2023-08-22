@@ -7,7 +7,6 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import com.ams.model.Admin;
 import com.ams.model.JobSeeker;
 import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 
@@ -126,6 +125,7 @@ class JobSeekerServiceTest {
 		}
 		assertNotNull(js, "This should get the user by id");
 	}
+	
 
 	@Test
 	@DisplayName("Get All Job Seekers")
@@ -173,5 +173,52 @@ class JobSeekerServiceTest {
 
 		assertTrue(result, "This should delete the user");
 	}
+	
+	
+	@Test
+	@DisplayName("Delete A Non Existing Job Seeker")
+	void testJ() throws ClassNotFoundException, SQLException {
+		System.out.println(userID);
+
+		JobSeekerService jobSeekerService = JobSeekerService.getJobseekerService();
+
+		boolean result = jobSeekerService.deleteJobSeeker(userID);
+
+		assertFalse(result, "This should return false");
+	}
+	
+	@Test
+	@DisplayName("Get A Job Seeker By Non Existing Id")
+	void testK() throws ClassNotFoundException, SQLException {
+
+		JobSeekerService jobSeekerService = JobSeekerService.getJobseekerService();
+
+		JobSeeker js = jobSeekerService.fetchSingleJobSeeker(userID);
+
+		if (!(js.getId() > 0)) {
+			js = null;
+		}
+		assertNull(js, "This should return null");
+	}
+	
+	
+	@Test
+	@DisplayName("Edit A Job Seeker For A Non Existing Id")
+	void testL() throws ClassNotFoundException, SQLException {
+		JobSeeker js = new JobSeeker();
+		js.setName("Test Name 2");
+		js.setEmail(userEmail);
+		js.setNumber("076678000");
+		js.setPassword(userPassword);
+		js.setField("Cybersecurity");
+		js.setId(userID);
+
+		JobSeekerService jobSeekerService = JobSeekerService.getJobseekerService();
+
+		boolean result = jobSeekerService.editJobSeeker(js);
+
+		assertFalse(result, "This should return false");
+	}
+	
 
 }

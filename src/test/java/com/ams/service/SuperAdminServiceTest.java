@@ -84,10 +84,27 @@ class SuperAdminServiceTest {
 
 		assertTrue(result, "This should edit the super admin");
 	}
+	
+	@Test
+	@DisplayName("Edit Super Admin For A Non Existing Id")
+	void testE() throws ClassNotFoundException, SQLException {
+		SuperAdmin sa = new SuperAdmin();
+		sa.setName("Test Name");
+		sa.setEmail(userEmail);
+		sa.setNumber("0766786225");
+		sa.setPassword(userPassword);
+		sa.setId(100);
+
+		SuperAdminService superAdminService = SuperAdminService.getSuperAdminService();
+
+		boolean result = superAdminService.editAdmin(sa);
+
+		assertFalse(result, "This should return false");
+	}
 
 	@Test
 	@DisplayName("Get Super Admin By Id")
-	void testE() throws ClassNotFoundException, SQLException {
+	void testF() throws ClassNotFoundException, SQLException {
 
 		SuperAdminService superAdminService = SuperAdminService.getSuperAdminService();
 
@@ -97,5 +114,19 @@ class SuperAdminServiceTest {
 			sa = null;
 		}
 		assertNotNull(sa, "This should get the super admin by id");
+	}
+	
+	@Test
+	@DisplayName("Get Super Admin By Non Existing Id")
+	void testG() throws ClassNotFoundException, SQLException {
+
+		SuperAdminService superAdminService = SuperAdminService.getSuperAdminService();
+
+		SuperAdmin sa = superAdminService.fetchSingleSuperAdmin(100);
+
+		if (!(sa.getId() > 0)) {
+			sa = null;
+		}
+		assertNull(sa, "This should return null");
 	}
 }
