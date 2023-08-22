@@ -16,13 +16,11 @@ import com.ams.model.Admin;
 import com.ams.model.Appointment;
 
 class AppointmentServiceTest {
-	
+
 	public static int appID;
 
-
-
 	@Test
-	@DisplayName("Add appointment")
+	@DisplayName("Add Appointment")
 	void testA() throws ClassNotFoundException, SQLException {
 
 		Appointment app = new Appointment();
@@ -38,11 +36,10 @@ class AppointmentServiceTest {
 
 		assertTrue(result, "This should add an appointment into the database");
 	}
-	
-	@Test
-	@DisplayName("Get single appointment")
-	void testB() throws ClassNotFoundException, SQLException {
 
+	@Test
+	@DisplayName("Get Single Appointment")
+	void testB() throws ClassNotFoundException, SQLException {
 
 		AppointmentService appservice = AppointmentService.getAppService();
 
@@ -54,16 +51,15 @@ class AppointmentServiceTest {
 			app = null;
 		}
 
-		assertNotNull(app, "This should login the user");
+		assertNotNull(app, "This should get the appointment");
 	}
-	
-	
+
 	@Test
-	@DisplayName("Book appointment")
+	@DisplayName("Book Appointment")
 	void testC() throws ClassNotFoundException, SQLException {
 
 		Appointment app = new Appointment();
-			
+
 		app.setSeekerId(59);
 		app.setState("pending");
 		app.setAssigned_date("2023-08-21");
@@ -74,24 +70,22 @@ class AppointmentServiceTest {
 		boolean result = appservice.bookApp(app);
 
 		assertTrue(result, "This should book an appointment");
-	
-	
+
 	}
-	
+
 	@Test
-	@DisplayName("Cancel appointment")
+	@DisplayName("Cancel Appointment")
 	void testD() throws ClassNotFoundException, SQLException {
 
 		AppointmentService appservice = AppointmentService.getAppService();
 
 		boolean result = appservice.cancelApp(appID);
-	
+
 		assertTrue(result, "This should cancel an appointment");
 	}
-	
-	
+
 	@Test
-	@DisplayName("Get all appointments")
+	@DisplayName("Get All Appointments")
 	void testE() throws ClassNotFoundException, SQLException {
 
 		AppointmentService appservice = AppointmentService.getAppService();
@@ -105,9 +99,9 @@ class AppointmentServiceTest {
 
 		assertTrue(haveData, "This should get all the appointments");
 	}
-	
+
 	@Test
-	@DisplayName("Get all appointments for reports")
+	@DisplayName("Get All Appointments For Reports")
 	void testF() throws ClassNotFoundException, SQLException {
 
 		AppointmentService appservice = AppointmentService.getAppService();
@@ -121,10 +115,9 @@ class AppointmentServiceTest {
 
 		assertTrue(haveData, "This should get all the appointments with the foreign key data");
 	}
-	
-	
+
 	@Test
-	@DisplayName("Change appointment state")
+	@DisplayName("Change Appointment State")
 	void testG() throws ClassNotFoundException, SQLException {
 
 		Appointment app = new Appointment();
@@ -136,12 +129,11 @@ class AppointmentServiceTest {
 		boolean result = appservice.changeAppState(app);
 
 		assertTrue(result, "This should change the appointment state");
-	
-	
+
 	}
-	
+
 	@Test
-	@DisplayName("Delete the appointment")
+	@DisplayName("Delete The Appointment")
 	void testH() throws ClassNotFoundException, SQLException {
 
 		AppointmentService appservice = AppointmentService.getAppService();
@@ -150,7 +142,5 @@ class AppointmentServiceTest {
 
 		assertTrue(result, "This should delete the appointment");
 	}
-	
-
 
 }

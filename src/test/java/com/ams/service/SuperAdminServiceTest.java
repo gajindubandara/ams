@@ -4,14 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
 
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-
-import com.ams.model.Admin;
-import com.ams.model.JobSeeker;
 import com.ams.model.SuperAdmin;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -39,9 +35,9 @@ class SuperAdminServiceTest {
 
 		assertNotNull(sa, "This should login the user");
 	}
-	
+
 	@Test
-	@DisplayName("Super Admin login with invaid password")
+	@DisplayName("Super Admin Login With Invalid Password")
 	void testB() throws ClassNotFoundException, SQLException {
 		final String email = userEmail;
 		final String password = "igiuiags687687ahdkjhk";
@@ -50,8 +46,6 @@ class SuperAdminServiceTest {
 
 		SuperAdmin sa = superAdminService.loginSuperAdmin(email, password);
 
-
-
 		if (!(sa.getId() > 0)) {
 			sa = null;
 		}
@@ -59,7 +53,7 @@ class SuperAdminServiceTest {
 	}
 
 	@Test
-	@DisplayName("Super Admin login with invalid email ")
+	@DisplayName("Super Admin Login With Invalid Email ")
 	void testC() throws ClassNotFoundException, SQLException {
 		final String email = "wrong@gmail.com";
 		final String password = userPassword;
@@ -68,16 +62,14 @@ class SuperAdminServiceTest {
 
 		SuperAdmin sa = superAdminService.loginSuperAdmin(email, password);
 
-
-
 		if (!(sa.getId() > 0)) {
 			sa = null;
 		}
 		assertNull(sa, "This should fail login");
 	}
-	
+
 	@Test
-	@DisplayName("Edit a job seeker")
+	@DisplayName("Edit Super Admin")
 	void testD() throws ClassNotFoundException, SQLException {
 		SuperAdmin sa = new SuperAdmin();
 		sa.setName("Test Name");
@@ -92,9 +84,9 @@ class SuperAdminServiceTest {
 
 		assertTrue(result, "This should edit the super admin");
 	}
-	
+
 	@Test
-	@DisplayName("Get super admin by Id")
+	@DisplayName("Get Super Admin By Id")
 	void testE() throws ClassNotFoundException, SQLException {
 
 		SuperAdminService superAdminService = SuperAdminService.getSuperAdminService();

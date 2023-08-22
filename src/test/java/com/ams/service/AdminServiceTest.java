@@ -22,7 +22,7 @@ class AdminServiceTest {
 	public String userPassword = "c4ca4238a0b923820dcc509a6f75849b";
 
 	@Test
-	@DisplayName("Register as a admin")
+	@DisplayName("Register As An Admin")
 	void testA() throws ClassNotFoundException, SQLException {
 
 		Admin admin = new Admin();
@@ -42,7 +42,7 @@ class AdminServiceTest {
 	}
 
 	@Test
-	@DisplayName("Try To register a user for an existing email")
+	@DisplayName("Try To Register An Admin For An Existing Email")
 	void testB() throws ClassNotFoundException {
 		Admin admin = new Admin();
 		admin.setName("Test Name");
@@ -87,7 +87,7 @@ class AdminServiceTest {
 	}
 
 	@Test
-	@DisplayName("Admin login with invaid password")
+	@DisplayName("Admin With Invalid Password")
 	void testD() throws ClassNotFoundException, SQLException {
 		final String email = userEmail;
 		final String password = "igiuiags687687ahdkjhk";
@@ -96,7 +96,6 @@ class AdminServiceTest {
 
 		Admin admin = adminService.loginAdmin(email, password);
 
-
 		if (!(admin.getId() > 0)) {
 			admin = null;
 		}
@@ -104,7 +103,7 @@ class AdminServiceTest {
 	}
 
 	@Test
-	@DisplayName("Admin login with invalid email ")
+	@DisplayName("Admin Login With Invalid Email")
 	void testE() throws ClassNotFoundException, SQLException {
 		final String email = "wrong@gmail.com";
 		final String password = userPassword;
@@ -114,7 +113,6 @@ class AdminServiceTest {
 		Admin admin = adminService.loginAdmin(email, password);
 		System.out.println(admin.getId());
 
-
 		if (!(admin.getId() > 0)) {
 			admin = null;
 		}
@@ -122,7 +120,7 @@ class AdminServiceTest {
 	}
 
 	@Test
-	@DisplayName("Get admin by Id")
+	@DisplayName("Get Admin By Id")
 	void testF() throws ClassNotFoundException, SQLException {
 
 		AdminService adminService = AdminService.getAdminService();
@@ -136,7 +134,7 @@ class AdminServiceTest {
 	}
 
 	@Test
-	@DisplayName("Get all job seekers")
+	@DisplayName("Get All Job Seekers")
 	void testG() throws ClassNotFoundException, SQLException {
 
 		AdminService adminService = AdminService.getAdminService();
@@ -150,10 +148,9 @@ class AdminServiceTest {
 
 		assertTrue(haveData, "This should get all the admins");
 	}
-	
-	
+
 	@Test
-	@DisplayName("Edit a admin")
+	@DisplayName("Edit An Admin")
 	void testH() throws ClassNotFoundException, SQLException {
 		Admin admin = new Admin();
 		admin.setName("Test Name");
@@ -173,7 +170,7 @@ class AdminServiceTest {
 	}
 
 	@Test
-	@DisplayName("Change admin state")
+	@DisplayName("Change Admin State")
 	void testI() throws ClassNotFoundException, SQLException {
 
 		Admin admin = new Admin();
@@ -186,7 +183,7 @@ class AdminServiceTest {
 	}
 
 	@Test
-	@DisplayName("Delete the admin")
+	@DisplayName("Delete An Admin")
 	void testJ() throws ClassNotFoundException, SQLException {
 		System.out.println(adminID);
 		AdminService adminService = AdminService.getAdminService();

@@ -23,7 +23,7 @@ class JobSeekerServiceTest {
 	public String userPassword = "c4ca4238a0b923820dcc509a6f75849b";
 
 	@Test
-	@DisplayName("Register as a job seeker")
+	@DisplayName("Register As A Job Seeker")
 	void testA() throws ClassNotFoundException, SQLException {
 
 		JobSeeker jobSeeker = new JobSeeker();
@@ -41,7 +41,7 @@ class JobSeekerServiceTest {
 	}
 
 	@Test
-	@DisplayName("Try To register a user for an existing email")
+	@DisplayName("Try To Register A Job Seeker For An Existing Email")
 	void testB() throws ClassNotFoundException {
 		JobSeeker jobSeeker = new JobSeeker();
 		jobSeeker.setName("Test Name");
@@ -55,10 +55,10 @@ class JobSeekerServiceTest {
 		try {
 			jobSeekerService.addJobSeeker(jobSeeker);
 		} catch (MysqlDataTruncation e) {
-			assertEquals(MysqlDataTruncation.class, e.getClass(), "Expected exception was not thrown.");
+			assertEquals(MysqlDataTruncation.class, e.getClass(), "This should throw an exception");
 		} catch (SQLException e) {
 			assertEquals(SQLIntegrityConstraintViolationException.class, e.getClass(),
-					"Expected exception was not thrown.");
+					"This should throw an exception");
 		}
 
 	}
@@ -83,7 +83,7 @@ class JobSeekerServiceTest {
 	}
 
 	@Test
-	@DisplayName("Job seeker login with invaid password")
+	@DisplayName("Job Seeker Login With Invalid Password")
 	void testD() throws ClassNotFoundException, SQLException {
 		final String email = userEmail;
 		final String password = "igiuiags687687ahdkjhk";
@@ -99,7 +99,7 @@ class JobSeekerServiceTest {
 	}
 
 	@Test
-	@DisplayName("Job seeker login with invalid email ")
+	@DisplayName("Job Seeker Login With Invalid Email")
 	void testE() throws ClassNotFoundException, SQLException {
 		final String email = "wrong@gmail.com";
 		final String password = userPassword;
@@ -114,9 +114,8 @@ class JobSeekerServiceTest {
 	}
 
 	@Test
-	@DisplayName("Get user by Id")
+	@DisplayName("Get Job Seeker By Id")
 	void testF() throws ClassNotFoundException, SQLException {
-
 
 		JobSeekerService jobSeekerService = JobSeekerService.getJobseekerService();
 
@@ -129,30 +128,29 @@ class JobSeekerServiceTest {
 	}
 
 	@Test
-	@DisplayName("Get all job seekers")
+	@DisplayName("Get All Job Seekers")
 	void testG() throws ClassNotFoundException, SQLException {
-
 
 		JobSeekerService jobSeekerService = JobSeekerService.getJobseekerService();
 
 		List<JobSeeker> result = jobSeekerService.fetchAllJobSeekers();
-		
+
 		boolean haveData = true;
-		
+
 		if (!(result.size() > 0)) {
 			haveData = false;
 		}
 
 		assertTrue(haveData, "This should get all the job seekers");
 	}
-	
+
 	@Test
-	@DisplayName("Edit a job seeker")
+	@DisplayName("Edit A Job Seeker")
 	void testH() throws ClassNotFoundException, SQLException {
 		JobSeeker js = new JobSeeker();
-		js.setName("Test Name");
+		js.setName("Test Name 2");
 		js.setEmail(userEmail);
-		js.setNumber("0766786225");
+		js.setNumber("076678000");
 		js.setPassword(userPassword);
 		js.setField("Cybersecurity");
 		js.setId(userID);
@@ -165,7 +163,7 @@ class JobSeekerServiceTest {
 	}
 
 	@Test
-	@DisplayName("Delete the job seeker")
+	@DisplayName("Delete The Job Seeker")
 	void testI() throws ClassNotFoundException, SQLException {
 		System.out.println(userID);
 
