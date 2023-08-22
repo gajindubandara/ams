@@ -115,8 +115,8 @@
 		</div>
 	</nav>
 	
-		<div class="container">
-		<div class="card">
+		<div class="container"  style="margin: 80px auto">
+		<div class="card" style="border-radius: 25px;">
 			<div class="card-body p-md-5">
 				<h1 class="card-title">System Statistics</h1>
 				<hr>
@@ -238,6 +238,12 @@
 			</div>
 		</div>
 	</div>
+	<footer class="footer">
+		<div class="text-center p-3"
+			style="background-color: #3d4452; color: white;">
+			© 2023 Copyright: <a class="text-white" href="h">TheJobs.com</a>
+		</div>
+	</footer>
 <!-- ajax -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

@@ -86,52 +86,48 @@
 		</div>
 	</nav>
 
-	<div class="container h-100">
-		<section class="vh-100">
+	<div class="container" style="margin: 80px auto">
+		<div
+			class="row d-flex justify-content-center align-items-center h-100">
+			<div class="col-md-6">
+				<div class="card text-black" style="border-radius: 25px;">
+					<div class="card-body">
+						<div class="row justify-content-center" style="margin: 5% 0%;">
+							<div class="col-md-12">
+								<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Super
+									Admin Login</p>
 
-			<div
-				class="row d-flex justify-content-center align-items-center h-100">
-				<div class="col-md-6">
-					<div class="card text-black" style="border-radius: 25px;">
-						<div class="card-body">
-							<div class="row justify-content-center" style="margin: 5% 0%;">
-								<div class="col-md-12">
-									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Super
-										Admin Login</p>
+								<form class="mx-1 mx-md-4" id="loginForm">
+									<!-- username input -->
+									<div class="d-flex flex-row align-items-center mb-4">
+										<div class="form-outline flex-fill mb-0">
+											<label class="form-label">Your Email</label><span
+												class="text-danger">*</span> <input type="email"
+												class="form-control" name="email" id="email" required />
+											<div class="text-danger" id="emailError"></div>
+										</div>
+									</div>
+									<!-- password input -->
+									<div class="d-flex flex-row align-items-center mb-4">
+										<div class="form-outline flex-fill mb-0">
+											<label class="form-label" for="password">Password</label><span
+												class="text-danger">*</span> <input type="password"
+												name="password" id="password" class="form-control" required />
+											<div class="text-danger" id="passwordError"></div>
+										</div>
+									</div>
 
-									<form class="mx-1 mx-md-4" id="loginForm">
-										<!-- username input -->
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Your Email</label><span
-													class="text-danger">*</span> <input type="email"
-													class="form-control" name="email" id="email" required />
-												<div class="text-danger" id="emailError"></div>
-											</div>
-										</div>
-										<!-- password input -->
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label" for="password">Password</label><span
-													class="text-danger">*</span> <input type="password"
-													name="password" id="password" class="form-control" required />
-												<div class="text-danger" id="passwordError"></div>
-											</div>
-										</div>
-
-										<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-											<button type="button" class="btn btn-primary btn-lg"
-												id="loginButton">Login</button>
-										</div>
-									</form>
-								</div>
+									<div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+										<button type="button" class="btn btn-primary btn-lg"
+											id="loginButton">Login</button>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-
+		</div>
 	</div>
 
 	<footer class="footer">

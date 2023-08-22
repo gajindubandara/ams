@@ -69,7 +69,7 @@
 	</nav>
 
 
-	<div class="container" style="margin-top: 80px;">
+	<div class="container" style="margin: 80px auto">
 		<div class="card" style="border-radius: 25px;">
 			<div class="card-body p-md-5">
 				<h1 class="card-title">Manage Consultants</h1>
@@ -137,13 +137,6 @@
 											<div class="text-danger" id="countryError"></div>
 										</div>
 									</div>
-									<!-- <input type="hidden" name="dates" id="dates" /> 
-									<input
-										type="hidden" name="slots" id="slots" /> 
-										<input type="hidden"
-										name="password" id="password" value="12345" />
-										 <input
-										type="hidden" name="actiontype" value="add" />  -->
 									<span>*Note - Default password is - 12345</span> <br>
 									<div class="d-flex justify-content-end mx-4 mb-3 mb-lg-4">
 										<button type="button" class="btn btn-primary btn-lg"
