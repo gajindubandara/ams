@@ -81,7 +81,7 @@
 		</div>
 	</nav>
 
-	<div class="container justify-content-center">
+	<div class="container justify-content-center" style="margin:80px auto 30px auto;">
 		<div class="row">
 			<div class="card"
 				style="background: rgb(235, 235, 235); border-radius: 25px;">
@@ -98,7 +98,7 @@
 		</div>
 	</div>
 
-	<div class="container justify-content-center">
+	<div class="container justify-content-center" style="margin-bottom:30px;">
 		<div class="row">
 			<div class="card"
 				style="background: rgb(235, 235, 235); border-radius: 25px;">
@@ -133,7 +133,7 @@
 		</div>
 	</div>
 
-	<div class="container justify-content-center">
+	<div class="container justify-content-center" style="margin-bottom:30px;">
 		<div class="row">
 			<div class="card"
 				style="background: rgb(235, 235, 235); border-radius: 25px;">
@@ -181,16 +181,16 @@
 		</div>
 	</div>
 
-	<div class="container justify-content-center">
+	<div class="container justify-content-center" style="margin-bottom:30px;">
 		<div class="row">
 			<div class="card"
 				style="background: rgb(235, 235, 235); border-radius: 25px;">
 				<p class="text-center h1  mb-5 mx-1 mx-md-4 mt-4">Our Location</p>
 
-				<div class="col-md-12" style="flex: none !important;">
+				<div class="col-md-12" style="flex: none !important; margin-bottom: 50px;">
 					<iframe style="display: block; margin: 20px auto;"
 						src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d440.71172710001474!2d80.63575254602611!3d7.302379879852639!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2slk!4v1692453886684!5m2!1sen!2slk"
-						width="1000" height="450" style="border:0;" allowfullscreen=""
+						width="800" height="450" style="border:0;" allowfullscreen=""
 						loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</div>
 			</div>

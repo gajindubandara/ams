@@ -77,128 +77,110 @@ document.addEventListener("DOMContentLoaded", function() {
 			</div>
 		</div>
 	</nav>
-	
-		<div class="container" style="margin-bottom: 40px">
-	<section class="vh-100">
-	
-			<div
-				class="row d-flex justify-content-center align-items-center h-100">
-				
-				<div class="col-md-12">
-					<div class="card text-black" style="border-radius: 25px;">
-						<div class="card-body">
-							<div class="row justify-content-center" style="margin: 5% 0%;">
-								<!-- <div class="col-md-6">
-									<img
-										src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-										class="img-fluid" alt="Sample image" style="margin: 50% 0%">
-								</div> -->
-								<div class="col-md-12">
-									<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign
-										up</p>
-									<form id="regForm" class="mx-1 mx-md-4">
+
+	<div class="container" style="margin: 80px auto">
+		<div
+			class="row d-flex justify-content-center align-items-center h-100">
+
+			<div class="col-md-12">
+				<div class="card text-black" style="border-radius: 25px;">
+					<div class="card-body">
+						<div class="row justify-content-center" style="margin: 5% 0%;">
+							<div class="col-md-12">
+								<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign
+									up</p>
+								<form id="regForm" class="mx-1 mx-md-4">
 									<div class="row">
-									<div class="col-md-6">
-									<!-- Name input -->
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Your Name</label><span
-													class="text-danger">*</span> <input type="text"
-													class="form-control" id="name" name="name" required />
-												<div class="text-danger" id="nameError"></div>
+										<div class="col-md-6">
+											<!-- Name input -->
+											<div class="d-flex flex-row align-items-center mb-4">
+												<div class="form-outline flex-fill mb-0">
+													<label class="form-label">Your Name</label><span
+														class="text-danger">*</span> <input type="text"
+														class="form-control" id="name" name="name" required />
+													<div class="text-danger" id="nameError"></div>
+												</div>
+											</div>
+											<!-- Email input -->
+											<div class="d-flex flex-row align-items-center mb-4">
+												<div class="form-outline flex-fill mb-0">
+													<label class="form-label">Your Email</label><span
+														class="text-danger">*</span> <input type="email"
+														class="form-control" id="email" name="email" required />
+													<div class="text-danger" id="emailError"></div>
+												</div>
+											</div>
+											<!-- Number input -->
+											<div class="d-flex flex-row align-items-center mb-4">
+												<div class="form-outline flex-fill mb-0">
+													<label class="form-label">Your Number</label><span
+														class="text-danger">*</span> <input type="number"
+														class="form-control" id="number" name="number" required />
+													<div class="text-danger" id="numberError"></div>
+												</div>
 											</div>
 										</div>
-										<!-- Email input -->
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Your Email</label><span
-													class="text-danger">*</span> <input type="email"
-													class="form-control" id="email" name="email" required />
-												<div class="text-danger" id="emailError"></div>
-											</div>
-										</div>
-										<!-- Number input -->
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Your Number</label><span
-													class="text-danger">*</span> <input type="number"
-													class="form-control" id="number" name="number" required />
-												<div class="text-danger" id="numberError"></div>
-											</div>
-										</div>
-										</div>
-									<div class="col-md-6">
-									<!-- Field input -->
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label"> Interested Field</label><span
-													class="text-danger">*</span> 
-													<select class="form-control" id="field" name="field" required >
+										<div class="col-md-6">
+											<!-- Field input -->
+											<div class="d-flex flex-row align-items-center mb-4">
+												<div class="form-outline flex-fill mb-0">
+													<label class="form-label"> Interested Field</label><span
+														class="text-danger">*</span> <select class="form-control"
+														id="field" name="field" required>
 														<option value="" disabled selected>Select Field</option>
 													</select>
-												<div class="text-danger" id="fieldError"></div>
+													<div class="text-danger" id="fieldError"></div>
+												</div>
 											</div>
-										</div>
 
-										<!-- Password input -->
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Password</label><span
-													class="text-danger">*</span> <input type="password"
-													class="form-control" id="password" name="password" required />
-												<div class="text-danger" id="passwordError"></div>
+											<!-- Password input -->
+											<div class="d-flex flex-row align-items-center mb-4">
+												<div class="form-outline flex-fill mb-0">
+													<label class="form-label">Password</label><span
+														class="text-danger">*</span> <input type="password"
+														class="form-control" id="password" name="password"
+														required />
+													<div class="text-danger" id="passwordError"></div>
+												</div>
+											</div>
+											<!-- Repeat Password input -->
+											<div class="d-flex flex-row align-items-center mb-4">
+												<div class="form-outline flex-fill mb-0">
+													<label class="form-label">Repeat your password</label><span
+														class="text-danger">*</span> <input type="password"
+														class="form-control" id="repeatPassword" required />
+													<div class="text-danger" id="repeatPasswordError"></div>
+												</div>
 											</div>
 										</div>
-										<!-- Repeat Password input -->
-										<div class="d-flex flex-row align-items-center mb-4">
-											<div class="form-outline flex-fill mb-0">
-												<label class="form-label">Repeat your password</label><span
-													class="text-danger">*</span> <input type="password"
-													class="form-control" id="repeatPassword" required />
-												<div class="text-danger" id="repeatPasswordError"></div>
-											</div>
-										</div>
-										</div>
-										</div>
-										
-										
+									</div>
 									<div class="row">
-									<div class="col-md-12">
-									
-									<div style="margin-bottom: 10px;">
-											<a href="login.jsp">Already have an account? Login here.</a>
-										</div>
+										<div class="col-md-12">
 
-										<input type="hidden" name="actiontype" value="add" />
-										<input type="hidden" name="hashedPw" id="hashedPw" />
+											<div style="margin-bottom: 10px;">
+												<a href="login.jsp">Already have an account? Login here.</a>
+											</div>
 
-										<div class="d-flex justify-content-end mx-4 mb-3 mb-lg-4">
-											<!-- <button type="submit" class="btn btn-primary btn-lg"
-												id="registerButton">Register</button> -->
-											<button type="button" class="btn btn-primary btn-lg"
-												id="registerButton">Register</button>
+											<input type="hidden" name="actiontype" value="add" /> <input
+												type="hidden" name="hashedPw" id="hashedPw" />
+
+											<div class="d-flex justify-content-end mx-4 mb-3 mb-lg-4">
+												<button type="button" class="btn btn-primary btn-lg"
+													id="registerButton">Register</button>
+											</div>
 										</div>
 									</div>
-									</div>
-									
-										
-
-										
-										
-									</form>
-								</div>
+								</form>
 							</div>
 						</div>
 					</div>
-				
-				
 				</div>
 			</div>
-			</section>
 		</div>
-	
+	</div>
 
-	
+
+
 	<footer class="footer">
 		<div class="text-center p-3"
 			style="background-color: #3d4452; color: white;">
