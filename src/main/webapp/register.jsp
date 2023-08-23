@@ -196,6 +196,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- alert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
+	<script src = "https://smtpjs.com/v3/smtp.js"></script>
+ 	<script src="email.js"></script>
 
 	<script>
     document.addEventListener('DOMContentLoaded', function () { 
@@ -353,6 +356,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     },
                     success: function(response) {
                       console.log("Success:", response);
+                      
+                      sendEmail(email,name,"register");
                       
                       Swal.fire({
                           icon: 'success',

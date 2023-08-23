@@ -157,6 +157,10 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- alert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
+	<script src = "https://smtpjs.com/v3/smtp.js"></script>
+ 	<script src="email.js"></script>
+ 	
 	<script>
 	document
 	.addEventListener(
@@ -184,6 +188,7 @@
 
 						const consultant = consultantSelect.value;
 						const slot = slotSelect.value;
+						const slotData = slotSelect.textContent;
 
 						if (!consultant || !slot) {
 
@@ -223,6 +228,54 @@
 									id: slot
 								},
 								success: function(response) {
+									
+									
+									//sending email
+									$.ajax({
+										url: "http://localhost:8080/ams/appointment?actiontype=all",
+										method: "GET",
+										dataType: "json",
+										success: function(data) {
+											const targetObject = data.find(item => item.id == slot);
+											
+											if (targetObject) {
+												//send email to user
+												sendAppointmentEmail(user.email, "book",consultant,user.name,targetObject.slot)
+												
+												//send email to consultant
+													$.ajax({
+															url: "http://localhost:8080/ams/admin?actiontype=getAllConsultants",
+															method: "GET",
+															dataType: "json",
+															success: function(data) {
+																
+															const obj = data.find(item => item.id == targetObject.adminId);
+															if (obj) {
+																sendAppointmentEmail(obj.email, "bookToConsultant",consultant,user.name,targetObject.slot);
+																} else {
+																  console.log("Object not found with id:", slot);
+																}
+															
+
+															},
+															error: function(xhr, status, error) {
+																console.error(
+																	"Error fetching API data:",
+																	error);
+															}
+														});
+												
+												} else {
+												  console.log("Object not found with id:", slot);
+												}
+										},
+										error: function(xhr, status, error) {
+											console.error(
+												"Error fetching API data:",
+												error);
+										}
+									});
+
 									Swal.fire({
 										icon: 'success',
 										title: 'Success!',
@@ -473,6 +526,31 @@
 	  	                	    id: obj.id
 	  	                	  },
 	  	                	  success: function(response) {
+	  	                		  
+	  	                		  //sending email
+	  	                		  var user = JSON.parse(sessionStorage.getItem("jobSeeker"));
+		  	                		$.ajax({
+										url: "http://localhost:8080/ams/appointment?actiontype=all",
+										method: "GET",
+										dataType: "json",
+										success: function(data) {
+											const targetObject = data.find(item => item.id == obj.id);
+											
+											if (targetObject) {
+												sendAppointmentEmail(user.email, "cancel",targetObject.adminName,user.name,targetObject.slot)
+												} else {
+												  console.log("Object not found with id:", slot);
+												}
+										},
+										error: function(xhr, status, error) {
+											console.error(
+												"Error fetching API data:",
+												error);
+										}
+									});
+	  	                		  
+	  	                		  
+	  	                		  
 	  	                		Swal.fire({
 									icon: 'success',
 									title: 'Success!',
